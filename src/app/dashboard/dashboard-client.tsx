@@ -159,12 +159,27 @@ export default function DashboardClient({
 
   const handleBillFormSubmit = async (data: Record<string, unknown>) => {
     try {
+      // Sanitize UUID fields - convert empty strings to null
+      const sanitizeUUIDs = (obj: Record<string, unknown>) => {
+        const sanitized = { ...obj };
+        const uuidFields = ['category_id', 'template_id', 'user_id'];
+        
+        uuidFields.forEach(field => {
+          if (sanitized[field] === '') {
+            sanitized[field] = null;
+          }
+        });
+        
+        return sanitized;
+      };
+
       if (editingBill) {
         // Update existing bill - remove fields that don't exist in bill_instances
         const { dtstart: _dtstart, rrule: _rrule, ...updateData } = data;
+        const sanitizedData = sanitizeUUIDs(updateData);
         const { error } = await supabase
           .from('bill_instances')
-          .update(updateData)
+          .update(sanitizedData)
           .eq('id', editingBill.id);
 
         if (error) throw error;
@@ -201,9 +216,12 @@ export default function DashboardClient({
           ai_metadata: {}
         };
 
+        // Sanitize UUID fields
+        const sanitizedData = sanitizeUUIDs(billData);
+        
         const { error } = await supabase
           .from('bill_instances')
-          .insert([billData]);
+          .insert([sanitizedData]);
 
         if (error) throw error;
       }

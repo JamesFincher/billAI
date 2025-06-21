@@ -337,9 +337,19 @@ export class BillService {
   }
 
   async createBill(bill: CreateBillInstance): Promise<BillInstance> {
+    // Sanitize UUID fields - convert empty strings to null
+    const sanitizedBill = { ...bill };
+    
+    if (sanitizedBill.category_id === '') {
+      sanitizedBill.category_id = undefined;
+    }
+    if (sanitizedBill.template_id === '') {
+      sanitizedBill.template_id = undefined;
+    }
+
     const { data, error } = await this.supabase
       .from('bill_instances')
-      .insert(bill)
+      .insert(sanitizedBill)
       .select()
       .single();
 
@@ -354,9 +364,19 @@ export class BillService {
       throw new Error('Cannot edit historical bills');
     }
 
+    // Sanitize UUID fields - convert empty strings to null
+    const sanitizedUpdates = { ...updates };
+    
+    if (sanitizedUpdates.category_id === '') {
+      sanitizedUpdates.category_id = undefined;
+    }
+    if (sanitizedUpdates.template_id === '') {
+      sanitizedUpdates.template_id = undefined;
+    }
+
     const { data, error } = await this.supabase
       .from('bill_instances')
-      .update(updates)
+      .update(sanitizedUpdates)
       .eq('id', id)
       .select()
       .single();
