@@ -159,6 +159,13 @@ export default function DashboardClient({
 
   const handleBillFormSubmit = async (data: Record<string, unknown>) => {
     try {
+      // Get current user
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      if (userError || !user) {
+        console.error('Error getting user:', userError);
+        return;
+      }
+
       // Sanitize UUID fields - convert empty strings to null
       const sanitizeUUIDs = (obj: Record<string, unknown>) => {
         const sanitized = { ...obj };
@@ -184,9 +191,13 @@ export default function DashboardClient({
 
         if (error) throw error;
       } else {
-        // Create new bill - remove fields that don't exist in bill_instances
+        // Create new bill - remove fields that don't exist in bill_instances and add user_id
         const { dtstart: _dtstart, rrule: _rrule, ...insertData } = data;
-        const sanitizedData = sanitizeUUIDs(insertData);
+        const billData = {
+          ...insertData,
+          user_id: user.id
+        };
+        const sanitizedData = sanitizeUUIDs(billData);
         const { error } = await supabase
           .from('bill_instances')
           .insert([sanitizedData]);
