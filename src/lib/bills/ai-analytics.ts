@@ -72,6 +72,7 @@ export class AIAnalyticsService {
   /**
    * Analyze spending by category
    */
+  // @ts-ignore - Supabase type inference issue
   private async getCategoryBreakdown(startDate: Date, endDate: Date) {
     const { data: bills, error } = await this.supabase
       .from('bill_instances')
@@ -88,10 +89,11 @@ export class AIAnalyticsService {
     const totalAmount = bills?.reduce((sum, bill) => sum + bill.amount, 0) || 0;
 
     bills?.forEach(bill => {
-      if (bill.category && !Array.isArray(bill.category)) {
-        const categoryId = bill.category.id;
+      if (bill.category && typeof bill.category === 'object' && 'id' in bill.category) {
+        const category = bill.category as BillCategory;
+        const categoryId = category.id;
         const existing = categoryData.get(categoryId) || { 
-          category: bill.category, 
+          category: category, 
           total: 0, 
           count: 0 
         };
