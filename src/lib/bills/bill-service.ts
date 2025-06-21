@@ -1,4 +1,4 @@
-import { createClientComponentClient } from '@supabase/auth-helpers-nextjs';
+import { createClient } from '@/lib/supabase/client';
 import { addDays, parseISO, format, isPast, isFuture, startOfDay } from 'date-fns';
 import type {
   BillCategory,
@@ -30,7 +30,7 @@ import {
 } from './rrule-utils';
 
 export class BillService {
-  private supabase = createClientComponentClient();
+  private supabase = createClient();
 
   // ============= CATEGORIES =============
   async getCategories(): Promise<BillCategory[]> {

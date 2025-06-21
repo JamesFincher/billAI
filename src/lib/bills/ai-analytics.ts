@@ -89,11 +89,11 @@ export class AIAnalyticsService {
     const totalAmount = bills?.reduce((sum, bill) => sum + bill.amount, 0) || 0;
 
     bills?.forEach(bill => {
-      if (bill.category && typeof bill.category === 'object' && 'id' in bill.category) {
-        const category = bill.category as BillCategory;
-        const categoryId = category.id;
+      // @ts-ignore - Supabase category type inference issue
+      if (bill.category && bill.category.id) {
+        const categoryId = bill.category.id;
         const existing = categoryData.get(categoryId) || { 
-          category: category, 
+          category: bill.category, 
           total: 0, 
           count: 0 
         };

@@ -1,0 +1,322 @@
+<testsuites id="" name="" tests="60" failures="0" skipped="30" errors="0" time="18.892920999999998">
+<testsuite name="auth.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="chromium" tests="6" failures="0" skipped="0" time="18.932" errors="0">
+<testcase name="Authentication › should display landing page" classname="auth.spec.ts" time="3.563">
+</testcase>
+<testcase name="Authentication › should navigate to auth page" classname="auth.spec.ts" time="3.647">
+</testcase>
+<testcase name="Authentication › should show validation errors for empty form" classname="auth.spec.ts" time="3.836">
+</testcase>
+<testcase name="Authentication › should allow switching between sign in and sign up" classname="auth.spec.ts" time="3.712">
+</testcase>
+<testcase name="Authentication › should handle form submission" classname="auth.spec.ts" time="3.736">
+</testcase>
+<testcase name="Protected Routes › should redirect to auth when accessing protected routes without login" classname="auth.spec.ts" time="0.438">
+</testcase>
+</testsuite>
+<testsuite name="dashboard.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="chromium" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="Dashboard › should display dashboard after login" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should display user menu" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should allow logout" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should display invoice statistics" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Bill Management › should navigate to bills section" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Bill Management › should open add bill form" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="firefox" tests="6" failures="0" skipped="0" time="12.092" errors="0">
+<testcase name="Authentication › should display landing page" classname="auth.spec.ts" time="1.861">
+</testcase>
+<testcase name="Authentication › should navigate to auth page" classname="auth.spec.ts" time="2.495">
+</testcase>
+<testcase name="Authentication › should show validation errors for empty form" classname="auth.spec.ts" time="1.588">
+</testcase>
+<testcase name="Authentication › should allow switching between sign in and sign up" classname="auth.spec.ts" time="2.385">
+</testcase>
+<testcase name="Authentication › should handle form submission" classname="auth.spec.ts" time="2.731">
+</testcase>
+<testcase name="Protected Routes › should redirect to auth when accessing protected routes without login" classname="auth.spec.ts" time="1.032">
+</testcase>
+</testsuite>
+<testsuite name="dashboard.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="firefox" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="Dashboard › should display dashboard after login" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should display user menu" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should allow logout" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should display invoice statistics" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Bill Management › should navigate to bills section" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Bill Management › should open add bill form" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="webkit" tests="6" failures="0" skipped="0" time="9.761" errors="0">
+<testcase name="Authentication › should display landing page" classname="auth.spec.ts" time="1.467">
+</testcase>
+<testcase name="Authentication › should navigate to auth page" classname="auth.spec.ts" time="2.247">
+</testcase>
+<testcase name="Authentication › should show validation errors for empty form" classname="auth.spec.ts" time="1.601">
+</testcase>
+<testcase name="Authentication › should allow switching between sign in and sign up" classname="auth.spec.ts" time="1.876">
+</testcase>
+<testcase name="Authentication › should handle form submission" classname="auth.spec.ts" time="1.558">
+</testcase>
+<testcase name="Protected Routes › should redirect to auth when accessing protected routes without login" classname="auth.spec.ts" time="1.012">
+</testcase>
+</testsuite>
+<testsuite name="dashboard.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="webkit" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="Dashboard › should display dashboard after login" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should display user menu" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should allow logout" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should display invoice statistics" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Bill Management › should navigate to bills section" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Bill Management › should open add bill form" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="Mobile Chrome" tests="6" failures="0" skipped="0" time="5.8" errors="0">
+<testcase name="Authentication › should display landing page" classname="auth.spec.ts" time="1.067">
+</testcase>
+<testcase name="Authentication › should navigate to auth page" classname="auth.spec.ts" time="1.312">
+</testcase>
+<testcase name="Authentication › should show validation errors for empty form" classname="auth.spec.ts" time="1.019">
+</testcase>
+<testcase name="Authentication › should allow switching between sign in and sign up" classname="auth.spec.ts" time="1.099">
+</testcase>
+<testcase name="Authentication › should handle form submission" classname="auth.spec.ts" time="0.771">
+</testcase>
+<testcase name="Protected Routes › should redirect to auth when accessing protected routes without login" classname="auth.spec.ts" time="0.532">
+</testcase>
+</testsuite>
+<testsuite name="dashboard.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="Mobile Chrome" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="Dashboard › should display dashboard after login" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should display user menu" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should allow logout" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should display invoice statistics" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Bill Management › should navigate to bills section" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Bill Management › should open add bill form" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+<testsuite name="auth.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="Mobile Safari" tests="6" failures="0" skipped="0" time="8.666" errors="0">
+<testcase name="Authentication › should display landing page" classname="auth.spec.ts" time="1.083">
+</testcase>
+<testcase name="Authentication › should navigate to auth page" classname="auth.spec.ts" time="1.998">
+</testcase>
+<testcase name="Authentication › should show validation errors for empty form" classname="auth.spec.ts" time="1.534">
+</testcase>
+<testcase name="Authentication › should allow switching between sign in and sign up" classname="auth.spec.ts" time="1.581">
+</testcase>
+<testcase name="Authentication › should handle form submission" classname="auth.spec.ts" time="1.432">
+</testcase>
+<testcase name="Protected Routes › should redirect to auth when accessing protected routes without login" classname="auth.spec.ts" time="1.038">
+</testcase>
+</testsuite>
+<testsuite name="dashboard.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="Mobile Safari" tests="6" failures="0" skipped="6" time="0" errors="0">
+<testcase name="Dashboard › should display dashboard after login" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should display user menu" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should allow logout" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Dashboard › should display invoice statistics" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Bill Management › should navigate to bills section" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+<testcase name="Bill Management › should open add bill form" classname="dashboard.spec.ts" time="0">
+<properties>
+<property name="skip" value="">
+</property>
+</properties>
+<skipped>
+</skipped>
+</testcase>
+</testsuite>
+</testsuites>
