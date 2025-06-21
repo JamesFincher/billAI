@@ -159,6 +159,13 @@ export default function DashboardClient({
 
   const handleBillFormSubmit = async (data: Record<string, unknown>) => {
     try {
+      // Get current user
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      if (userError || !user) {
+        console.error('Error getting user:', userError);
+        return;
+      }
+
       // Sanitize UUID fields - convert empty strings to null
       const sanitizeUUIDs = (obj: Record<string, unknown>) => {
         const sanitized = { ...obj };
@@ -218,7 +225,6 @@ export default function DashboardClient({
 
         // Sanitize UUID fields
         const sanitizedData = sanitizeUUIDs(billData);
-        
         const { error } = await supabase
           .from('bill_instances')
           .insert([sanitizedData]);
