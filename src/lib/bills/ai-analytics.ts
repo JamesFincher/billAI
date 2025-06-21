@@ -88,7 +88,7 @@ export class AIAnalyticsService {
     const totalAmount = bills?.reduce((sum, bill) => sum + bill.amount, 0) || 0;
 
     bills?.forEach(bill => {
-      if (bill.category) {
+      if (bill.category && !Array.isArray(bill.category)) {
         const categoryId = bill.category.id;
         const existing = categoryData.get(categoryId) || { 
           category: bill.category, 
@@ -190,7 +190,7 @@ export class AIAnalyticsService {
       ? earlierMonths.reduce((sum, month) => sum + month.total, 0) / earlierMonths.length 
       : averageRecent;
 
-    const trendDirection = averageRecent > averageEarlier * 1.1 ? 'increasing' 
+    const trendDirection: 'increasing' | 'decreasing' | 'stable' = averageRecent > averageEarlier * 1.1 ? 'increasing' 
       : averageRecent < averageEarlier * 0.9 ? 'decreasing' 
       : 'stable';
 

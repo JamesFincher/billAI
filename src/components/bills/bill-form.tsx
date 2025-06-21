@@ -2,14 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { BillInstance, BillTemplate, CreateBillInstance, CreateBillTemplate } from '@/types/bill-database';
+import { BillInstance, BillTemplate } from '@/types/bill-database';
 import { format } from 'date-fns';
 
 interface BillFormProps {
   mode: 'create' | 'edit';
   type: 'bill' | 'income' | 'template';
   initialData?: Partial<BillInstance | BillTemplate>;
-  onSubmit: (data: any) => Promise<void>;
+  onSubmit: (data: Record<string, any>) => Promise<void>;
   onCancel: () => void;
   isLoading?: boolean;
 }

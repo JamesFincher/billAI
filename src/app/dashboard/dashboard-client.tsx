@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { createClient } from '@/lib/supabase/client';
 import { MonthSelector } from '@/components/ui/month-selector';
 import { Modal } from '@/components/ui/modal';
@@ -16,7 +16,7 @@ import {
   ChartBarIcon,
   SparklesIcon
 } from '@heroicons/react/24/outline';
-import type { BillInstance, BillWithDetails } from '@/types/bill-database';
+import type { BillWithDetails } from '@/types/bill-database';
 
 interface DashboardStats {
   totalBills: number;
@@ -48,7 +48,7 @@ export default function DashboardClient({
 
   const supabase = createClient();
 
-  const fetchData = async (month: Date) => {
+  const fetchData = useCallback(async (month: Date) => {
     setLoading(true);
     try {
       const year = month.getFullYear();
@@ -101,11 +101,11 @@ export default function DashboardClient({
     } finally {
       setLoading(false);
     }
-  };
+  }, [supabase]);
 
   useEffect(() => {
     fetchData(selectedMonth);
-  }, [selectedMonth]);
+  }, [selectedMonth, fetchData]);
 
   const handleMonthChange = (month: Date) => {
     setSelectedMonth(month);
@@ -157,11 +157,11 @@ export default function DashboardClient({
     }
   };
 
-  const handleBillFormSubmit = async (data: any) => {
+  const handleBillFormSubmit = async (data: Record<string, unknown>) => {
     try {
       if (editingBill) {
         // Update existing bill - remove fields that don't exist in bill_instances
-        const { dtstart, rrule, ...updateData } = data;
+        const { dtstart: _dtstart, rrule: _rrule, ...updateData } = data;
         const { error } = await supabase
           .from('bill_instances')
           .update(updateData)
@@ -170,7 +170,7 @@ export default function DashboardClient({
         if (error) throw error;
       } else {
         // Create new bill - remove fields that don't exist in bill_instances
-        const { dtstart, rrule, ...insertData } = data;
+        const { dtstart: _dtstart, rrule: _rrule, ...insertData } = data;
         const { error } = await supabase
           .from('bill_instances')
           .insert([insertData]);

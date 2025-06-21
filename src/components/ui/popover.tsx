@@ -48,7 +48,7 @@ export function Popover({ open, onOpenChange, children }: PopoverProps) {
       {React.Children.map(children, (child) => {
         if (React.isValidElement(child)) {
           if (child.type === PopoverTrigger) {
-            return React.cloneElement(child, { onClick: handleToggle });
+            return React.cloneElement(child as React.ReactElement<PopoverTriggerProps>, { onClick: handleToggle });
           }
           if (child.type === PopoverContent) {
             return isOpen ? child : null;

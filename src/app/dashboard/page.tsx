@@ -44,7 +44,7 @@ export default async function DashboardPage() {
   const bills: BillWithDetails[] = (billsData || []).map(bill => ({
     ...bill,
     category: bill.category || null,
-    tags: bill.tags?.map((tagRelation: any) => tagRelation.tag) || [],
+    tags: bill.tags?.map((tagRelation: { tag: any }) => tagRelation.tag) || [],
     attachments: bill.attachments || [],
     template: bill.template || null
   }));
