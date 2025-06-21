@@ -8,19 +8,30 @@ import { format } from 'date-fns';
 interface BillFormProps {
   mode: 'create' | 'edit';
   type: 'bill' | 'income' | 'template';
+  selectedMonth?: Date;
   initialData?: Partial<BillInstance | BillTemplate>;
   onSubmit: (data: Record<string, any>) => Promise<void>;
   onCancel: () => void;
   isLoading?: boolean;
 }
 
-export function BillForm({ mode, type, initialData, onSubmit, onCancel, isLoading }: BillFormProps) {
+export function BillForm({ mode, type, selectedMonth, initialData, onSubmit, onCancel, isLoading }: BillFormProps) {
+  // Calculate default due date based on selectedMonth or current date
+  const getDefaultDueDate = () => {
+    if (selectedMonth) {
+      // Set to the 15th of the selected month (middle of month)
+      const defaultDate = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), 15);
+      return format(defaultDate, 'yyyy-MM-dd');
+    }
+    return format(new Date(), 'yyyy-MM-dd');
+  };
+
   const [formData, setFormData] = useState({
     title: '',
     description: '',
     amount: '',
     currency: 'USD',
-    due_date: format(new Date(), 'yyyy-MM-dd'),
+    due_date: getDefaultDueDate(),
     category_id: '',
     priority: 3,
     is_recurring: false,
@@ -43,6 +54,16 @@ export function BillForm({ mode, type, initialData, onSubmit, onCancel, isLoadin
       setIsRecurring(initialData.is_recurring || false);
     }
   }, [initialData]);
+
+  // Update due_date when selectedMonth changes (for new bills)
+  useEffect(() => {
+    if (mode === 'create' && !initialData && selectedMonth) {
+      setFormData(prev => ({
+        ...prev,
+        due_date: getDefaultDueDate()
+      }));
+    }
+  }, [selectedMonth, mode, initialData]);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type: inputType } = e.target;

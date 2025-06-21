@@ -51,10 +51,31 @@ export default function DashboardClient({
   const fetchData = useCallback(async (month: Date) => {
     setLoading(true);
     try {
+      // First check authentication
+      const { data: { user }, error: userError } = await supabase.auth.getUser();
+      if (userError) {
+        console.error('Authentication error:', userError);
+        return;
+      }
+      if (!user) {
+        console.error('No authenticated user found');
+        return;
+      }
+
+      console.log('🔍 Fetching bills for user:', user.id);
+
       const year = month.getFullYear();
       const monthNum = month.getMonth() + 1;
       const startDate = new Date(year, monthNum - 1, 1);
       const endDate = new Date(year, monthNum, 0);
+
+      console.log('📅 Date range:', {
+        startDate: startDate.toISOString().split('T')[0],
+        endDate: endDate.toISOString().split('T')[0],
+        month: month.toISOString().split('T')[0],
+        year,
+        monthNum
+      });
 
       // Fetch bills for the month
       const { data: billsData, error: billsError } = await supabase
@@ -67,7 +88,24 @@ export default function DashboardClient({
         .lte('due_date', endDate.toISOString().split('T')[0])
         .order('due_date', { ascending: true });
 
-      if (billsError) throw billsError;
+      if (billsError) {
+        console.error('Error fetching bills:', billsError);
+        throw billsError;
+      }
+
+      console.log('📋 Raw bills data:', billsData);
+      console.log('📊 Bills count:', billsData?.length || 0);
+      
+      // Also fetch ALL bills for this user to see what's in the database
+      const { data: allBills, error: allBillsError } = await supabase
+        .from('bill_instances')
+        .select('id, title, amount, due_date, status, created_date')
+        .order('created_date', { ascending: false })
+        .limit(10);
+        
+      if (!allBillsError) {
+        console.log('🗂️ ALL user bills (last 10):', allBills);
+      }
 
       // Transform data to match BillWithDetails interface
       const transformedBills: BillWithDetails[] = (billsData || []).map(bill => ({
@@ -87,14 +125,18 @@ export default function DashboardClient({
       const paidAmount = transformedBills.filter(bill => bill.status === 'paid')
         .reduce((sum, bill) => sum + (bill.amount || 0), 0);
 
-      setStats({
+      const newStats = {
         totalBills,
         paidBills,
         pendingBills,
         overdueBills,
         totalAmount,
         paidAmount
-      });
+      };
+
+      console.log('📈 Calculated stats:', newStats);
+
+      setStats(newStats);
       setBills(transformedBills);
     } catch (error) {
       console.error('Error fetching data:', error);
@@ -158,13 +200,18 @@ export default function DashboardClient({
   };
 
   const handleBillFormSubmit = async (data: Record<string, unknown>) => {
+    console.log('💾 Starting bill form submission...', data);
+    
     try {
       // Get current user
       const { data: { user }, error: userError } = await supabase.auth.getUser();
       if (userError || !user) {
         console.error('Error getting user:', userError);
+        alert('Authentication error. Please refresh and try again.');
         return;
       }
+
+      console.log('👤 Authenticated user:', user.id);
 
       // Sanitize UUID fields - convert empty strings to null
       const sanitizeUUIDs = (obj: Record<string, unknown>) => {
@@ -181,23 +228,31 @@ export default function DashboardClient({
       };
 
       if (editingBill) {
+        console.log('✏️ Updating existing bill:', editingBill.id);
+        
         // Update existing bill - remove fields that don't exist in bill_instances
         const { dtstart: _dtstart, rrule: _rrule, ...updateData } = data;
         const sanitizedData = sanitizeUUIDs(updateData);
+        
+        console.log('📝 Update data:', sanitizedData);
+        
         const { error } = await supabase
           .from('bill_instances')
           .update(sanitizedData)
           .eq('id', editingBill.id);
 
-        if (error) throw error;
+        if (error) {
+          console.error('❌ Update error:', error);
+          throw error;
+        }
+        
+        console.log('✅ Bill updated successfully');
       } else {
+        console.log('➕ Creating new bill...');
+        
         // Create new bill - map form data to database schema
         const { dtstart: _dtstart, rrule: _rrule, ...formData } = data;
         
-        // Get current user
-        const { data: { user } } = await supabase.auth.getUser();
-        if (!user) throw new Error('User not authenticated');
-
         // Map form data to CreateBillInstance schema
         const billData = {
           user_id: user.id,
@@ -223,18 +278,34 @@ export default function DashboardClient({
           ai_metadata: {}
         };
 
+        console.log('📋 Bill data to insert:', billData);
+        console.log('📅 Due date being inserted:', billData.due_date);
+        console.log('📅 Current month being viewed:', selectedMonth.toISOString().split('T')[0]);
+
         // Sanitize UUID fields
         const sanitizedData = sanitizeUUIDs(billData);
-        const { error } = await supabase
+        
+        console.log('🧹 Sanitized data:', sanitizedData);
+        console.log('🧹 Sanitized due_date:', sanitizedData.due_date);
+        
+        const { data: insertedBill, error } = await supabase
           .from('bill_instances')
-          .insert([sanitizedData]);
+          .insert([sanitizedData])
+          .select()
+          .single();
 
-        if (error) throw error;
+        if (error) {
+          console.error('❌ Insert error:', error);
+          throw error;
+        }
+        
+        console.log('✅ Bill created successfully:', insertedBill);
       }
 
+      console.log('🔄 Refreshing data...');
       handleBillSaved();
     } catch (error) {
-      console.error('Error saving bill:', error);
+      console.error('💥 Error saving bill:', error);
       // Show error to user
       alert(`Error saving bill: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
@@ -447,6 +518,7 @@ export default function DashboardClient({
         <BillForm
           mode={editingBill ? 'edit' : 'create'}
           type={modalType}
+          selectedMonth={selectedMonth}
           initialData={editingBill ? {
             ...editingBill,
             category: editingBill.category || undefined,
