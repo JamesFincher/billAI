@@ -169,11 +169,41 @@ export default function DashboardClient({
 
         if (error) throw error;
       } else {
-        // Create new bill - remove fields that don't exist in bill_instances
-        const { dtstart: _dtstart, rrule: _rrule, ...insertData } = data;
+        // Create new bill - map form data to database schema
+        const { dtstart: _dtstart, rrule: _rrule, ...formData } = data;
+        
+        // Get current user
+        const { data: { user } } = await supabase.auth.getUser();
+        if (!user) throw new Error('User not authenticated');
+
+        // Map form data to CreateBillInstance schema
+        const billData = {
+          user_id: user.id,
+          template_id: null, // One-time bills don't have templates
+          title: formData.title as string,
+          description: formData.description as string || null,
+          amount: formData.amount as number,
+          currency: formData.currency as string || 'USD',
+          due_date: formData.due_date as string,
+          scheduled_date: null,
+          paid_date: null,
+          created_date: new Date().toISOString(),
+          status: 'pending' as const,
+          is_recurring: formData.is_recurring as boolean || false,
+          category_id: formData.category_id as string || null,
+          notes: formData.notes as string || null,
+          priority: (formData.priority as number) || 3,
+          is_historical: false,
+          original_amount: null,
+          ai_predicted_amount: null,
+          ai_confidence_score: 0.0,
+          ai_risk_score: 0.0,
+          ai_metadata: {}
+        };
+
         const { error } = await supabase
           .from('bill_instances')
-          .insert([insertData]);
+          .insert([billData]);
 
         if (error) throw error;
       }
@@ -181,6 +211,8 @@ export default function DashboardClient({
       handleBillSaved();
     } catch (error) {
       console.error('Error saving bill:', error);
+      // Show error to user
+      alert(`Error saving bill: ${error instanceof Error ? error.message : 'Unknown error'}`);
     }
   };
 
