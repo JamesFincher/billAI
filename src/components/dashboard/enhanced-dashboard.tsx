@@ -64,7 +64,9 @@ export default function EnhancedDashboard({
   categories = [],
   spendingPatterns = []
 }: EnhancedDashboardProps) {
-  const [selectedMonth, setSelectedMonth] = useState<Date>(new Date(initialMonth + '-01'));
+  // Fix timezone issue: parse the month string and construct date properly
+  const [year, month] = initialMonth.split('-').map(Number);
+  const [selectedMonth, setSelectedMonth] = useState<Date>(new Date(year, month - 1, 1));
   const [stats, setStats] = useState(initialStats);
   const [bills, setBills] = useState(initialBills);
   const [aiInsights, setAiInsights] = useState<AIInsight[]>([]);

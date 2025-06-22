@@ -16,13 +16,9 @@ interface BillFormProps {
 }
 
 export function BillForm({ mode, type, selectedMonth, initialData, onSubmit, onCancel, isLoading }: BillFormProps) {
-  // Calculate default due date based on selectedMonth or current date
+  // Calculate default due date - always use current date for new bills
   const getDefaultDueDate = () => {
-    if (selectedMonth) {
-      // Set to the 15th of the selected month (middle of month)
-      const defaultDate = new Date(selectedMonth.getFullYear(), selectedMonth.getMonth(), 15);
-      return format(defaultDate, 'yyyy-MM-dd');
-    }
+    // For new bills, always default to today's date for better UX
     return format(new Date(), 'yyyy-MM-dd');
   };
 
@@ -70,15 +66,8 @@ export function BillForm({ mode, type, selectedMonth, initialData, onSubmit, onC
     }
   }, [initialData]);
 
-  // Update due_date when selectedMonth changes (for new bills)
-  useEffect(() => {
-    if (mode === 'create' && !initialData && selectedMonth) {
-      setFormData(prev => ({
-        ...prev,
-        due_date: getDefaultDueDate()
-      }));
-    }
-  }, [selectedMonth, mode, initialData]);
+  // Keep due_date as current date for new bills - don't change when month changes
+  // This ensures new bills always default to today's date regardless of which month is being viewed
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value, type: inputType } = e.target;

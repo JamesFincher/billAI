@@ -38,7 +38,11 @@ export default function DashboardClient({
   initialBills, 
   initialMonth 
 }: DashboardClientProps) {
-  const [selectedMonth, setSelectedMonth] = useState<Date>(new Date(initialMonth + '-01'));
+  // Fix timezone issue: parse the month string and construct date properly
+  const [year, month] = initialMonth.split('-').map(Number);
+  const selectedMonthDate = new Date(year, month - 1, 1); // month is 0-based in Date constructor
+  
+  const [selectedMonth, setSelectedMonth] = useState<Date>(selectedMonthDate);
   const [stats, setStats] = useState(initialStats);
   const [bills, setBills] = useState(initialBills);
   const [isModalOpen, setIsModalOpen] = useState(false);
