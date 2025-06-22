@@ -133,21 +133,21 @@
   },
   "suites": [
     {
-      "title": "auth.spec.ts",
-      "file": "auth.spec.ts",
+      "title": "basic-ui.spec.ts",
+      "file": "basic-ui.spec.ts",
       "column": 0,
       "line": 0,
       "specs": [],
       "suites": [
         {
-          "title": "Authentication",
-          "file": "auth.spec.ts",
+          "title": "BillAI - Basic UI Tests",
+          "file": "basic-ui.spec.ts",
           "line": 3,
           "column": 6,
           "specs": [
             {
-              "title": "should display landing page",
-              "ok": true,
+              "title": "landing page loads correctly",
+              "ok": false,
               "tags": [],
               "tests": [
                 {
@@ -160,28 +160,68 @@
                     {
                       "workerIndex": 0,
                       "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 3563,
-                      "errors": [],
+                      "status": "failed",
+                      "duration": 3891,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n\n    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47",
+                        "location": {
+                          "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                          "column": 47,
+                          "line": 13
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 11 |\u001b[39m     \u001b[90m// Check that navigation elements are present\u001b[39m\n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'nav'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=BillAI'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m     \n \u001b[90m 15 |\u001b[39m     \u001b[90m// Check that call-to-action buttons are present\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Get Started Free'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                            "column": 47,
+                            "line": 13
+                          },
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n\n\n\u001b[0m \u001b[90m 11 |\u001b[39m     \u001b[90m// Check that navigation elements are present\u001b[39m\n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'nav'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=BillAI'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m     \n \u001b[90m 15 |\u001b[39m     \u001b[90m// Check that call-to-action buttons are present\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Get Started Free'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47\u001b[22m"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:38.634Z",
+                      "startTime": "2025-06-21T19:16:42.577Z",
                       "annotations": [],
-                      "attachments": []
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                        "column": 47,
+                        "line": 13
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-7672ada30b717d6bb5d4",
-              "file": "auth.spec.ts",
-              "line": 8,
+              "id": "42aae976a9f749167392-a5f5232db79406ea0da4",
+              "file": "basic-ui.spec.ts",
+              "line": 4,
               "column": 7
             },
             {
-              "title": "should navigate to auth page",
-              "ok": true,
+              "title": "navigation to dashboard works",
+              "ok": false,
               "tags": [],
               "tests": [
                 {
@@ -194,27 +234,67 @@
                     {
                       "workerIndex": 1,
                       "parallelIndex": 1,
-                      "status": "passed",
-                      "duration": 3647,
-                      "errors": [],
+                      "status": "failed",
+                      "duration": 8491,
+                      "error": {
+                        "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected pattern: \u001b[32m/.*dashboard.*/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:3001/\"\u001b[39m\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m    9 × locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m      - unexpected value \"http://localhost:3001/\"\u001b[22m\n",
+                        "stack": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected pattern: \u001b[32m/.*dashboard.*/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:3001/\"\u001b[39m\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m    9 × locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m      - unexpected value \"http://localhost:3001/\"\u001b[22m\n\n    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:27:24",
+                        "location": {
+                          "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                          "column": 24,
+                          "line": 27
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 25 |\u001b[39m     \n \u001b[90m 26 |\u001b[39m     \u001b[90m// Should navigate to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/.*dashboard.*/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m\n \u001b[90m 30 |\u001b[39m   test(\u001b[32m'navigation to auth works'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                            "column": 24,
+                            "line": 27
+                          },
+                          "message": "Error: \u001b[31mTimed out 5000ms waiting for \u001b[39m\u001b[2mexpect(\u001b[22m\u001b[31mlocator\u001b[39m\u001b[2m).\u001b[22mtoHaveURL\u001b[2m(\u001b[22m\u001b[32mexpected\u001b[39m\u001b[2m)\u001b[22m\n\nLocator: locator(':root')\nExpected pattern: \u001b[32m/.*dashboard.*/\u001b[39m\nReceived string:  \u001b[31m\"http://localhost:3001/\"\u001b[39m\nCall log:\n\u001b[2m  - Expect \"toHaveURL\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator(':root')\u001b[22m\n\u001b[2m    9 × locator resolved to <html lang=\"en\">…</html>\u001b[22m\n\u001b[2m      - unexpected value \"http://localhost:3001/\"\u001b[22m\n\n\n\u001b[0m \u001b[90m 25 |\u001b[39m     \n \u001b[90m 26 |\u001b[39m     \u001b[90m// Should navigate to dashboard\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 27 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page)\u001b[33m.\u001b[39mtoHaveURL(\u001b[35m/.*dashboard.*/\u001b[39m)\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                        \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 28 |\u001b[39m   })\u001b[33m;\u001b[39m\n \u001b[90m 29 |\u001b[39m\n \u001b[90m 30 |\u001b[39m   test(\u001b[32m'navigation to auth works'\u001b[39m\u001b[33m,\u001b[39m \u001b[36masync\u001b[39m ({ page }) \u001b[33m=>\u001b[39m {\u001b[0m\n\u001b[2m    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:27:24\u001b[22m"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:38.666Z",
+                      "startTime": "2025-06-21T19:16:42.579Z",
                       "annotations": [],
-                      "attachments": []
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-5c27b-vigation-to-dashboard-works-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-5c27b-vigation-to-dashboard-works-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-5c27b-vigation-to-dashboard-works-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                        "column": 24,
+                        "line": 27
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-76b930585706fa9c7728",
-              "file": "auth.spec.ts",
-              "line": 13,
+              "id": "42aae976a9f749167392-71b29d28c10c89181fed",
+              "file": "basic-ui.spec.ts",
+              "line": 20,
               "column": 7
             },
             {
-              "title": "should show validation errors for empty form",
+              "title": "navigation to auth works",
               "ok": true,
               "tags": [],
               "tests": [
@@ -229,12 +309,12 @@
                       "workerIndex": 2,
                       "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 3836,
+                      "duration": 7838,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:38.636Z",
+                      "startTime": "2025-06-21T19:16:42.562Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -242,13 +322,13 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-861f1c39dff611da9024",
-              "file": "auth.spec.ts",
-              "line": 20,
+              "id": "42aae976a9f749167392-9d34e52312df093b55bc",
+              "file": "basic-ui.spec.ts",
+              "line": 30,
               "column": 7
             },
             {
-              "title": "should allow switching between sign in and sign up",
+              "title": "responsive design - mobile view",
               "ok": true,
               "tags": [],
               "tests": [
@@ -263,12 +343,12 @@
                       "workerIndex": 3,
                       "parallelIndex": 3,
                       "status": "passed",
-                      "duration": 3712,
+                      "duration": 4152,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:38.635Z",
+                      "startTime": "2025-06-21T19:16:42.569Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -276,14 +356,14 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-ae6a9aa1ea7a2b715d16",
-              "file": "auth.spec.ts",
-              "line": 34,
+              "id": "42aae976a9f749167392-88f0aef67663635ef52b",
+              "file": "basic-ui.spec.ts",
+              "line": 40,
               "column": 7
             },
             {
-              "title": "should handle form submission",
-              "ok": true,
+              "title": "feature cards are visible",
+              "ok": false,
               "tags": [],
               "tests": [
                 {
@@ -296,13 +376,87 @@
                     {
                       "workerIndex": 4,
                       "parallelIndex": 4,
+                      "status": "failed",
+                      "duration": 4127,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n\n    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60",
+                        "location": {
+                          "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                          "column": 60,
+                          "line": 58
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 56 |\u001b[39m     \n \u001b[90m 57 |\u001b[39m     \u001b[90m// Check that feature cards are present\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 58 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=AI-Powered Insights'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Smart Analytics'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Automated Payments'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 61 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                            "column": 60,
+                            "line": 58
+                          },
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n\n\n\u001b[0m \u001b[90m 56 |\u001b[39m     \n \u001b[90m 57 |\u001b[39m     \u001b[90m// Check that feature cards are present\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 58 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=AI-Powered Insights'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Smart Analytics'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Automated Payments'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 61 |\u001b[39m     \u001b[0m\n\u001b[2m    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-21T19:16:42.579Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-chromium/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-chromium/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-chromium/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                        "column": 60,
+                        "line": 58
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "42aae976a9f749167392-1beeb8ab6598553a835a",
+              "file": "basic-ui.spec.ts",
+              "line": 54,
+              "column": 7
+            },
+            {
+              "title": "footer is present",
+              "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "chromium",
+                  "projectName": "chromium",
+                  "results": [
+                    {
+                      "workerIndex": 3,
+                      "parallelIndex": 3,
                       "status": "passed",
-                      "duration": 3736,
+                      "duration": 1202,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:38.663Z",
+                      "startTime": "2025-06-21T19:16:48.447Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -310,14 +464,14 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-21dc3a3b9b7284c37554",
-              "file": "auth.spec.ts",
-              "line": 53,
+              "id": "42aae976a9f749167392-ed8f8f4cfe46737c5ca1",
+              "file": "basic-ui.spec.ts",
+              "line": 68,
               "column": 7
             },
             {
-              "title": "should display landing page",
-              "ok": true,
+              "title": "landing page loads correctly",
+              "ok": false,
               "tags": [],
               "tests": [
                 {
@@ -329,28 +483,68 @@
                   "results": [
                     {
                       "workerIndex": 5,
-                      "parallelIndex": 1,
-                      "status": "passed",
-                      "duration": 1861,
-                      "errors": [],
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 3490,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n\n    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47",
+                        "location": {
+                          "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                          "column": 47,
+                          "line": 13
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 11 |\u001b[39m     \u001b[90m// Check that navigation elements are present\u001b[39m\n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'nav'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=BillAI'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m     \n \u001b[90m 15 |\u001b[39m     \u001b[90m// Check that call-to-action buttons are present\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Get Started Free'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                            "column": 47,
+                            "line": 13
+                          },
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n\n\n\u001b[0m \u001b[90m 11 |\u001b[39m     \u001b[90m// Check that navigation elements are present\u001b[39m\n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'nav'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=BillAI'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m     \n \u001b[90m 15 |\u001b[39m     \u001b[90m// Check that call-to-action buttons are present\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Get Started Free'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47\u001b[22m"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:43.199Z",
+                      "startTime": "2025-06-21T19:16:49.470Z",
                       "annotations": [],
-                      "attachments": []
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-firefox/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-firefox/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-firefox/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                        "column": 47,
+                        "line": 13
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-c6155fc078888607cc52",
-              "file": "auth.spec.ts",
-              "line": 8,
+              "id": "42aae976a9f749167392-59387b0aca690a68460e",
+              "file": "basic-ui.spec.ts",
+              "line": 4,
               "column": 7
             },
             {
-              "title": "should navigate to auth page",
+              "title": "navigation to dashboard works",
               "ok": true,
               "tags": [],
               "tests": [
@@ -363,14 +557,14 @@
                   "results": [
                     {
                       "workerIndex": 6,
-                      "parallelIndex": 3,
+                      "parallelIndex": 4,
                       "status": "passed",
-                      "duration": 2495,
+                      "duration": 2896,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:43.196Z",
+                      "startTime": "2025-06-21T19:16:49.975Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -378,13 +572,13 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-683b0f03e4840386bc40",
-              "file": "auth.spec.ts",
-              "line": 13,
+              "id": "42aae976a9f749167392-bee6bf593f4d882e974d",
+              "file": "basic-ui.spec.ts",
+              "line": 20,
               "column": 7
             },
             {
-              "title": "should show validation errors for empty form",
+              "title": "navigation to auth works",
               "ok": true,
               "tags": [],
               "tests": [
@@ -397,14 +591,14 @@
                   "results": [
                     {
                       "workerIndex": 7,
-                      "parallelIndex": 4,
+                      "parallelIndex": 3,
                       "status": "passed",
-                      "duration": 1588,
+                      "duration": 3511,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:43.223Z",
+                      "startTime": "2025-06-21T19:16:50.499Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -412,13 +606,13 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-c53a24dd48fc22866106",
-              "file": "auth.spec.ts",
-              "line": 20,
+              "id": "42aae976a9f749167392-7cac98ad207220f2b44b",
+              "file": "basic-ui.spec.ts",
+              "line": 30,
               "column": 7
             },
             {
-              "title": "should allow switching between sign in and sign up",
+              "title": "responsive design - mobile view",
               "ok": true,
               "tags": [],
               "tests": [
@@ -433,12 +627,12 @@
                       "workerIndex": 8,
                       "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 2385,
+                      "duration": 2012,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:43.260Z",
+                      "startTime": "2025-06-21T19:16:55.259Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -446,14 +640,14 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-d009e6fe513a181bb236",
-              "file": "auth.spec.ts",
-              "line": 34,
+              "id": "42aae976a9f749167392-59b912013d9dea391a64",
+              "file": "basic-ui.spec.ts",
+              "line": 40,
               "column": 7
             },
             {
-              "title": "should handle form submission",
-              "ok": true,
+              "title": "feature cards are visible",
+              "ok": false,
               "tags": [],
               "tests": [
                 {
@@ -465,28 +659,68 @@
                   "results": [
                     {
                       "workerIndex": 9,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 2731,
-                      "errors": [],
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 3245,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n\n    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60",
+                        "location": {
+                          "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                          "column": 60,
+                          "line": 58
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 56 |\u001b[39m     \n \u001b[90m 57 |\u001b[39m     \u001b[90m// Check that feature cards are present\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 58 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=AI-Powered Insights'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Smart Analytics'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Automated Payments'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 61 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                            "column": 60,
+                            "line": 58
+                          },
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n\n\n\u001b[0m \u001b[90m 56 |\u001b[39m     \n \u001b[90m 57 |\u001b[39m     \u001b[90m// Check that feature cards are present\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 58 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=AI-Powered Insights'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Smart Analytics'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Automated Payments'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 61 |\u001b[39m     \u001b[0m\n\u001b[2m    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60\u001b[22m"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:43.413Z",
+                      "startTime": "2025-06-21T19:16:55.619Z",
                       "annotations": [],
-                      "attachments": []
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-firefox/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-firefox/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-firefox/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                        "column": 60,
+                        "line": 58
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-341c50a94e8141d64704",
-              "file": "auth.spec.ts",
-              "line": 53,
+              "id": "42aae976a9f749167392-ee3e78f9f0af11d2e85d",
+              "file": "basic-ui.spec.ts",
+              "line": 54,
               "column": 7
             },
             {
-              "title": "should display landing page",
+              "title": "footer is present",
               "ok": true,
               "tags": [],
               "tests": [
@@ -494,19 +728,19 @@
                   "timeout": 30000,
                   "annotations": [],
                   "expectedStatus": "passed",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
+                  "projectId": "firefox",
+                  "projectName": "firefox",
                   "results": [
                     {
                       "workerIndex": 10,
-                      "parallelIndex": 4,
+                      "parallelIndex": 0,
                       "status": "passed",
-                      "duration": 1467,
+                      "duration": 4182,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:48.143Z",
+                      "startTime": "2025-06-21T19:16:55.939Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -514,14 +748,14 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-f67b3218e22a6dc20f71",
-              "file": "auth.spec.ts",
-              "line": 8,
+              "id": "42aae976a9f749167392-65c87862848dd68f32f1",
+              "file": "basic-ui.spec.ts",
+              "line": 68,
               "column": 7
             },
             {
-              "title": "should navigate to auth page",
-              "ok": true,
+              "title": "landing page loads correctly",
+              "ok": false,
               "tags": [],
               "tests": [
                 {
@@ -533,28 +767,68 @@
                   "results": [
                     {
                       "workerIndex": 11,
-                      "parallelIndex": 2,
-                      "status": "passed",
-                      "duration": 2247,
-                      "errors": [],
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 3306,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n\n    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47",
+                        "location": {
+                          "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                          "column": 47,
+                          "line": 13
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 11 |\u001b[39m     \u001b[90m// Check that navigation elements are present\u001b[39m\n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'nav'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=BillAI'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m     \n \u001b[90m 15 |\u001b[39m     \u001b[90m// Check that call-to-action buttons are present\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Get Started Free'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                            "column": 47,
+                            "line": 13
+                          },
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n\n\n\u001b[0m \u001b[90m 11 |\u001b[39m     \u001b[90m// Check that navigation elements are present\u001b[39m\n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'nav'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=BillAI'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m     \n \u001b[90m 15 |\u001b[39m     \u001b[90m// Check that call-to-action buttons are present\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Get Started Free'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47\u001b[22m"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:48.127Z",
+                      "startTime": "2025-06-21T19:16:56.397Z",
                       "annotations": [],
-                      "attachments": []
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-webkit/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-webkit/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                        "column": 47,
+                        "line": 13
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-0d22c800959f02658a08",
-              "file": "auth.spec.ts",
-              "line": 13,
+              "id": "42aae976a9f749167392-24c62c0b01dd1cd3e8a9",
+              "file": "basic-ui.spec.ts",
+              "line": 4,
               "column": 7
             },
             {
-              "title": "should show validation errors for empty form",
+              "title": "navigation to dashboard works",
               "ok": true,
               "tags": [],
               "tests": [
@@ -567,14 +841,14 @@
                   "results": [
                     {
                       "workerIndex": 12,
-                      "parallelIndex": 3,
+                      "parallelIndex": 4,
                       "status": "passed",
-                      "duration": 1601,
+                      "duration": 3075,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:48.907Z",
+                      "startTime": "2025-06-21T19:16:56.660Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -582,13 +856,13 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-6fd5d31eababd6861256",
-              "file": "auth.spec.ts",
+              "id": "42aae976a9f749167392-33fc9c07027df9866ac4",
+              "file": "basic-ui.spec.ts",
               "line": 20,
               "column": 7
             },
             {
-              "title": "should allow switching between sign in and sign up",
+              "title": "navigation to auth works",
               "ok": true,
               "tags": [],
               "tests": [
@@ -601,14 +875,14 @@
                   "results": [
                     {
                       "workerIndex": 13,
-                      "parallelIndex": 1,
+                      "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 1876,
+                      "duration": 2830,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:50.011Z",
+                      "startTime": "2025-06-21T19:17:00.947Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -616,13 +890,13 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-795ccda9c1eedba3e680",
-              "file": "auth.spec.ts",
-              "line": 34,
+              "id": "42aae976a9f749167392-462f727e6f6fd72045f9",
+              "file": "basic-ui.spec.ts",
+              "line": 30,
               "column": 7
             },
             {
-              "title": "should handle form submission",
+              "title": "responsive design - mobile view",
               "ok": true,
               "tags": [],
               "tests": [
@@ -634,15 +908,15 @@
                   "projectName": "webkit",
                   "results": [
                     {
-                      "workerIndex": 14,
-                      "parallelIndex": 0,
+                      "workerIndex": 12,
+                      "parallelIndex": 4,
                       "status": "passed",
-                      "duration": 1558,
+                      "duration": 862,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:49.863Z",
+                      "startTime": "2025-06-21T19:17:00.261Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -650,14 +924,122 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-845e39b144f2d397cb07",
-              "file": "auth.spec.ts",
-              "line": 53,
+              "id": "42aae976a9f749167392-29ddbc1d90df4435ddc4",
+              "file": "basic-ui.spec.ts",
+              "line": 40,
               "column": 7
             },
             {
-              "title": "should display landing page",
+              "title": "feature cards are visible",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 14,
+                      "parallelIndex": 3,
+                      "status": "failed",
+                      "duration": 2539,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n\n    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60",
+                        "location": {
+                          "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                          "column": 60,
+                          "line": 58
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 56 |\u001b[39m     \n \u001b[90m 57 |\u001b[39m     \u001b[90m// Check that feature cards are present\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 58 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=AI-Powered Insights'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Smart Analytics'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Automated Payments'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 61 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                            "column": 60,
+                            "line": 58
+                          },
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n\n\n\u001b[0m \u001b[90m 56 |\u001b[39m     \n \u001b[90m 57 |\u001b[39m     \u001b[90m// Check that feature cards are present\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 58 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=AI-Powered Insights'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Smart Analytics'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Automated Payments'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 61 |\u001b[39m     \u001b[0m\n\u001b[2m    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-21T19:17:01.307Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-webkit/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-webkit/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-webkit/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                        "column": 60,
+                        "line": 58
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "42aae976a9f749167392-877d04b73a297926cf05",
+              "file": "basic-ui.spec.ts",
+              "line": 54,
+              "column": 7
+            },
+            {
+              "title": "footer is present",
               "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "webkit",
+                  "projectName": "webkit",
+                  "results": [
+                    {
+                      "workerIndex": 16,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2248,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-21T19:17:02.026Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "42aae976a9f749167392-5229e74b7e66d07bc445",
+              "file": "basic-ui.spec.ts",
+              "line": 68,
+              "column": 7
+            },
+            {
+              "title": "landing page loads correctly",
+              "ok": false,
               "tags": [],
               "tests": [
                 {
@@ -669,62 +1051,68 @@
                   "results": [
                     {
                       "workerIndex": 15,
-                      "parallelIndex": 2,
-                      "status": "passed",
-                      "duration": 1067,
-                      "errors": [],
+                      "parallelIndex": 4,
+                      "status": "failed",
+                      "duration": 2192,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n\n    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47",
+                        "location": {
+                          "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                          "column": 47,
+                          "line": 13
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 11 |\u001b[39m     \u001b[90m// Check that navigation elements are present\u001b[39m\n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'nav'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=BillAI'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m     \n \u001b[90m 15 |\u001b[39m     \u001b[90m// Check that call-to-action buttons are present\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Get Started Free'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                            "column": 47,
+                            "line": 13
+                          },
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n\n\n\u001b[0m \u001b[90m 11 |\u001b[39m     \u001b[90m// Check that navigation elements are present\u001b[39m\n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'nav'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=BillAI'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m     \n \u001b[90m 15 |\u001b[39m     \u001b[90m// Check that call-to-action buttons are present\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Get Started Free'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47\u001b[22m"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:51.539Z",
+                      "startTime": "2025-06-21T19:17:01.631Z",
                       "annotations": [],
-                      "attachments": []
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Chrome/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Chrome/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Chrome/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                        "column": 47,
+                        "line": 13
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-bb4df9dce2dfffddc2f7",
-              "file": "auth.spec.ts",
-              "line": 8,
+              "id": "42aae976a9f749167392-c2f9cb923ead611b48c2",
+              "file": "basic-ui.spec.ts",
+              "line": 4,
               "column": 7
             },
             {
-              "title": "should navigate to auth page",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": 16,
-                      "parallelIndex": 3,
-                      "status": "passed",
-                      "duration": 1312,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:51.567Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "d748ac400d08b85935ef-1a4c28f391f4dd697fcc",
-              "file": "auth.spec.ts",
-              "line": 13,
-              "column": 7
-            },
-            {
-              "title": "should show validation errors for empty form",
+              "title": "navigation to dashboard works",
               "ok": true,
               "tags": [],
               "tests": [
@@ -737,14 +1125,14 @@
                   "results": [
                     {
                       "workerIndex": 17,
-                      "parallelIndex": 4,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1019,
+                      "duration": 1874,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:51.670Z",
+                      "startTime": "2025-06-21T19:17:02.050Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -752,13 +1140,13 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-63e880a13c33df331a8c",
-              "file": "auth.spec.ts",
+              "id": "42aae976a9f749167392-c2b2f19a108e2770aef5",
+              "file": "basic-ui.spec.ts",
               "line": 20,
               "column": 7
             },
             {
-              "title": "should allow switching between sign in and sign up",
+              "title": "navigation to auth works",
               "ok": true,
               "tags": [],
               "tests": [
@@ -771,14 +1159,14 @@
                   "results": [
                     {
                       "workerIndex": 18,
-                      "parallelIndex": 0,
+                      "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 1099,
+                      "duration": 2143,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:52.847Z",
+                      "startTime": "2025-06-21T19:17:05.385Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -786,13 +1174,13 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-317ec54cb3285e091543",
-              "file": "auth.spec.ts",
-              "line": 34,
+              "id": "42aae976a9f749167392-4f5b7dc96474d7db16b3",
+              "file": "basic-ui.spec.ts",
+              "line": 30,
               "column": 7
             },
             {
-              "title": "should handle form submission",
+              "title": "responsive design - mobile view",
               "ok": true,
               "tags": [],
               "tests": [
@@ -805,14 +1193,14 @@
                   "results": [
                     {
                       "workerIndex": 19,
-                      "parallelIndex": 1,
+                      "parallelIndex": 3,
                       "status": "passed",
-                      "duration": 771,
+                      "duration": 2656,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:53.143Z",
+                      "startTime": "2025-06-21T19:17:05.425Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -820,14 +1208,122 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-aa8acf8d06dc11c61e8c",
-              "file": "auth.spec.ts",
-              "line": 53,
+              "id": "42aae976a9f749167392-efaee3fec29a754acd6d",
+              "file": "basic-ui.spec.ts",
+              "line": 40,
               "column": 7
             },
             {
-              "title": "should display landing page",
+              "title": "feature cards are visible",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 17,
+                      "parallelIndex": 1,
+                      "status": "failed",
+                      "duration": 1483,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n\n    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60",
+                        "location": {
+                          "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                          "column": 60,
+                          "line": 58
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 56 |\u001b[39m     \n \u001b[90m 57 |\u001b[39m     \u001b[90m// Check that feature cards are present\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 58 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=AI-Powered Insights'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Smart Analytics'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Automated Payments'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 61 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                            "column": 60,
+                            "line": 58
+                          },
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n\n\n\u001b[0m \u001b[90m 56 |\u001b[39m     \n \u001b[90m 57 |\u001b[39m     \u001b[90m// Check that feature cards are present\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 58 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=AI-Powered Insights'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Smart Analytics'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Automated Payments'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 61 |\u001b[39m     \u001b[0m\n\u001b[2m    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-21T19:17:04.865Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Chrome/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Chrome/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Chrome/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                        "column": 60,
+                        "line": 58
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "42aae976a9f749167392-accc2b721d32d75aef0d",
+              "file": "basic-ui.spec.ts",
+              "line": 54,
+              "column": 7
+            },
+            {
+              "title": "footer is present",
               "ok": true,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Chrome",
+                  "projectName": "Mobile Chrome",
+                  "results": [
+                    {
+                      "workerIndex": 21,
+                      "parallelIndex": 0,
+                      "status": "passed",
+                      "duration": 2210,
+                      "errors": [],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-21T19:17:05.546Z",
+                      "annotations": [],
+                      "attachments": []
+                    }
+                  ],
+                  "status": "expected"
+                }
+              ],
+              "id": "42aae976a9f749167392-11edbbe811f85ddc4966",
+              "file": "basic-ui.spec.ts",
+              "line": 68,
+              "column": 7
+            },
+            {
+              "title": "landing page loads correctly",
+              "ok": false,
               "tags": [],
               "tests": [
                 {
@@ -840,61 +1336,67 @@
                     {
                       "workerIndex": 20,
                       "parallelIndex": 4,
-                      "status": "passed",
-                      "duration": 1083,
-                      "errors": [],
+                      "status": "failed",
+                      "duration": 1737,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n\n    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47",
+                        "location": {
+                          "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                          "column": 47,
+                          "line": 13
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 11 |\u001b[39m     \u001b[90m// Check that navigation elements are present\u001b[39m\n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'nav'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=BillAI'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m     \n \u001b[90m 15 |\u001b[39m     \u001b[90m// Check that call-to-action buttons are present\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Get Started Free'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                            "column": 47,
+                            "line": 13
+                          },
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:\n    1) <span class=\"text-xl font-bold text-gradient-primary\">BillAI</span> aka getByRole('navigation').getByText('BillAI')\n    2) <p class=\"text-xl text-blue-100 mb-8 max-w-2xl mx-auto\">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')\n    3) <span class=\"text-xl font-bold\">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })\n    4) <p class=\"text-gray-400 text-sm\">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')\n    5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=BillAI')\u001b[22m\n\n\n\u001b[0m \u001b[90m 11 |\u001b[39m     \u001b[90m// Check that navigation elements are present\u001b[39m\n \u001b[90m 12 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'nav'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 13 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=BillAI'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                               \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 14 |\u001b[39m     \n \u001b[90m 15 |\u001b[39m     \u001b[90m// Check that call-to-action buttons are present\u001b[39m\n \u001b[90m 16 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Get Started Free'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\u001b[0m\n\u001b[2m    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47\u001b[22m"
+                        }
+                      ],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:53.873Z",
+                      "startTime": "2025-06-21T19:17:05.550Z",
                       "annotations": [],
-                      "attachments": []
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Safari/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Safari/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Safari/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                        "column": 47,
+                        "line": 13
+                      }
                     }
                   ],
-                  "status": "expected"
+                  "status": "unexpected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-475394cba14559fb4491",
-              "file": "auth.spec.ts",
-              "line": 8,
+              "id": "42aae976a9f749167392-0c83ecb749a04ae4edce",
+              "file": "basic-ui.spec.ts",
+              "line": 4,
               "column": 7
             },
             {
-              "title": "should navigate to auth page",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Safari",
-                  "projectName": "Mobile Safari",
-                  "results": [
-                    {
-                      "workerIndex": 21,
-                      "parallelIndex": 3,
-                      "status": "passed",
-                      "duration": 1998,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:53.901Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "d748ac400d08b85935ef-83e445ddc46bd1e11093",
-              "file": "auth.spec.ts",
-              "line": 13,
-              "column": 7
-            },
-            {
-              "title": "should show validation errors for empty form",
+              "title": "navigation to dashboard works",
               "ok": true,
               "tags": [],
               "tests": [
@@ -907,14 +1409,14 @@
                   "results": [
                     {
                       "workerIndex": 22,
-                      "parallelIndex": 2,
+                      "parallelIndex": 1,
                       "status": "passed",
-                      "duration": 1534,
+                      "duration": 1516,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:54.060Z",
+                      "startTime": "2025-06-21T19:17:08.085Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -922,13 +1424,13 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-cb915f0d396a700e3429",
-              "file": "auth.spec.ts",
+              "id": "42aae976a9f749167392-0f2c5a1ca4e2b5d3714a",
+              "file": "basic-ui.spec.ts",
               "line": 20,
               "column": 7
             },
             {
-              "title": "should allow switching between sign in and sign up",
+              "title": "navigation to auth works",
               "ok": true,
               "tags": [],
               "tests": [
@@ -941,14 +1443,14 @@
                   "results": [
                     {
                       "workerIndex": 23,
-                      "parallelIndex": 0,
+                      "parallelIndex": 4,
                       "status": "passed",
-                      "duration": 1581,
+                      "duration": 1477,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:54.870Z",
+                      "startTime": "2025-06-21T19:17:08.324Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -956,13 +1458,13 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-2e1bd84cf2574c60abff",
-              "file": "auth.spec.ts",
-              "line": 34,
+              "id": "42aae976a9f749167392-73a577f4beb44e91ac98",
+              "file": "basic-ui.spec.ts",
+              "line": 30,
               "column": 7
             },
             {
-              "title": "should handle form submission",
+              "title": "responsive design - mobile view",
               "ok": true,
               "tags": [],
               "tests": [
@@ -975,158 +1477,14 @@
                   "results": [
                     {
                       "workerIndex": 24,
-                      "parallelIndex": 1,
-                      "status": "passed",
-                      "duration": 1432,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:54.905Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "d748ac400d08b85935ef-6cc46dc84b7ec5152a5a",
-              "file": "auth.spec.ts",
-              "line": 53,
-              "column": 7
-            }
-          ]
-        },
-        {
-          "title": "Protected Routes",
-          "file": "auth.spec.ts",
-          "line": 69,
-          "column": 6,
-          "specs": [
-            {
-              "title": "should redirect to auth when accessing protected routes without login",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": 0,
-                      "parallelIndex": 0,
-                      "status": "passed",
-                      "duration": 438,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:42.544Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "d748ac400d08b85935ef-a61e6348bd51ede8a222",
-              "file": "auth.spec.ts",
-              "line": 70,
-              "column": 7
-            },
-            {
-              "title": "should redirect to auth when accessing protected routes without login",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "firefox",
-                  "projectName": "firefox",
-                  "results": [
-                    {
-                      "workerIndex": 7,
-                      "parallelIndex": 4,
-                      "status": "passed",
-                      "duration": 1032,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:45.548Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "d748ac400d08b85935ef-11008265d7fb5c2a0594",
-              "file": "auth.spec.ts",
-              "line": 70,
-              "column": 7
-            },
-            {
-              "title": "should redirect to auth when accessing protected routes without login",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
-                  "results": [
-                    {
-                      "workerIndex": 10,
-                      "parallelIndex": 4,
-                      "status": "passed",
-                      "duration": 1012,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:49.960Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "expected"
-                }
-              ],
-              "id": "d748ac400d08b85935ef-f3520f6a3ccd07232eff",
-              "file": "auth.spec.ts",
-              "line": 70,
-              "column": 7
-            },
-            {
-              "title": "should redirect to auth when accessing protected routes without login",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [],
-                  "expectedStatus": "passed",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": 15,
                       "parallelIndex": 2,
                       "status": "passed",
-                      "duration": 532,
+                      "duration": 1231,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:52.865Z",
+                      "startTime": "2025-06-21T19:17:08.926Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1134,13 +1492,87 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-cb43a5f9cb3f00aeacfa",
-              "file": "auth.spec.ts",
-              "line": 70,
+              "id": "42aae976a9f749167392-593ed25c3ff4d27a3367",
+              "file": "basic-ui.spec.ts",
+              "line": 40,
               "column": 7
             },
             {
-              "title": "should redirect to auth when accessing protected routes without login",
+              "title": "feature cards are visible",
+              "ok": false,
+              "tags": [],
+              "tests": [
+                {
+                  "timeout": 30000,
+                  "annotations": [],
+                  "expectedStatus": "passed",
+                  "projectId": "Mobile Safari",
+                  "projectName": "Mobile Safari",
+                  "results": [
+                    {
+                      "workerIndex": 25,
+                      "parallelIndex": 0,
+                      "status": "failed",
+                      "duration": 1161,
+                      "error": {
+                        "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n",
+                        "stack": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n\n    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60",
+                        "location": {
+                          "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                          "column": 60,
+                          "line": 58
+                        },
+                        "snippet": "\u001b[0m \u001b[90m 56 |\u001b[39m     \n \u001b[90m 57 |\u001b[39m     \u001b[90m// Check that feature cards are present\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 58 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=AI-Powered Insights'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Smart Analytics'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Automated Payments'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 61 |\u001b[39m     \u001b[0m"
+                      },
+                      "errors": [
+                        {
+                          "location": {
+                            "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                            "column": 60,
+                            "line": 58
+                          },
+                          "message": "Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:\n    1) <p class=\"text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed\">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')\n    2) <h3 class=\"text-xl font-semibold text-gray-900 mb-3\">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })\n\nCall log:\n\u001b[2m  - Expect \"toBeVisible\" with timeout 5000ms\u001b[22m\n\u001b[2m  - waiting for locator('text=AI-Powered Insights')\u001b[22m\n\n\n\u001b[0m \u001b[90m 56 |\u001b[39m     \n \u001b[90m 57 |\u001b[39m     \u001b[90m// Check that feature cards are present\u001b[39m\n\u001b[31m\u001b[1m>\u001b[22m\u001b[39m\u001b[90m 58 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=AI-Powered Insights'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m    |\u001b[39m                                                            \u001b[31m\u001b[1m^\u001b[22m\u001b[39m\n \u001b[90m 59 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Smart Analytics'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 60 |\u001b[39m     \u001b[36mawait\u001b[39m expect(page\u001b[33m.\u001b[39mlocator(\u001b[32m'text=Automated Payments'\u001b[39m))\u001b[33m.\u001b[39mtoBeVisible()\u001b[33m;\u001b[39m\n \u001b[90m 61 |\u001b[39m     \u001b[0m\n\u001b[2m    at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60\u001b[22m"
+                        }
+                      ],
+                      "stdout": [],
+                      "stderr": [],
+                      "retry": 0,
+                      "startTime": "2025-06-21T19:17:09.105Z",
+                      "annotations": [],
+                      "attachments": [
+                        {
+                          "name": "screenshot",
+                          "contentType": "image/png",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Safari/test-failed-1.png"
+                        },
+                        {
+                          "name": "video",
+                          "contentType": "video/webm",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Safari/video.webm"
+                        },
+                        {
+                          "name": "error-context",
+                          "contentType": "text/markdown",
+                          "path": "/Users/jamesfincher/code/billAI/test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Safari/error-context.md"
+                        }
+                      ],
+                      "errorLocation": {
+                        "file": "/Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts",
+                        "column": 60,
+                        "line": 58
+                      }
+                    }
+                  ],
+                  "status": "unexpected"
+                }
+              ],
+              "id": "42aae976a9f749167392-74cd528c3ee418895c0e",
+              "file": "basic-ui.spec.ts",
+              "line": 54,
+              "column": 7
+            },
+            {
+              "title": "footer is present",
               "ok": true,
               "tags": [],
               "tests": [
@@ -1152,15 +1584,15 @@
                   "projectName": "Mobile Safari",
                   "results": [
                     {
-                      "workerIndex": 20,
-                      "parallelIndex": 4,
+                      "workerIndex": 26,
+                      "parallelIndex": 3,
                       "status": "passed",
-                      "duration": 1038,
+                      "duration": 913,
                       "errors": [],
                       "stdout": [],
                       "stderr": [],
                       "retry": 0,
-                      "startTime": "2025-06-21T06:40:55.248Z",
+                      "startTime": "2025-06-21T19:17:10.063Z",
                       "annotations": [],
                       "attachments": []
                     }
@@ -1168,1175 +1600,10 @@
                   "status": "expected"
                 }
               ],
-              "id": "d748ac400d08b85935ef-a2a99ce9cf49a6bb47cb",
-              "file": "auth.spec.ts",
-              "line": 70,
+              "id": "42aae976a9f749167392-80fd2154db8b7fde81d5",
+              "file": "basic-ui.spec.ts",
+              "line": 68,
               "column": 7
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "title": "dashboard.spec.ts",
-      "file": "dashboard.spec.ts",
-      "column": 0,
-      "line": 0,
-      "specs": [],
-      "suites": [
-        {
-          "title": "Dashboard",
-          "file": "dashboard.spec.ts",
-          "line": 13,
-          "column": 6,
-          "specs": [
-            {
-              "title": "should display dashboard after login",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:42.624Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-e22987545727f7401551",
-              "file": "dashboard.spec.ts",
-              "line": 14,
-              "column": 8
-            },
-            {
-              "title": "should display user menu",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:42.625Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-53dc643d58c50bdb3544",
-              "file": "dashboard.spec.ts",
-              "line": 22,
-              "column": 8
-            },
-            {
-              "title": "should allow logout",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:42.625Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-e422cd6b2e041e8e3961",
-              "file": "dashboard.spec.ts",
-              "line": 29,
-              "column": 8
-            },
-            {
-              "title": "should display invoice statistics",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:42.626Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-3de7401b4e3337d33072",
-              "file": "dashboard.spec.ts",
-              "line": 39,
-              "column": 8
-            },
-            {
-              "title": "should display dashboard after login",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "firefox",
-                  "projectName": "firefox",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:46.599Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-f7f26fcb8d0cb0e43ff1",
-              "file": "dashboard.spec.ts",
-              "line": 14,
-              "column": 8
-            },
-            {
-              "title": "should display user menu",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "firefox",
-                  "projectName": "firefox",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:46.603Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-f3a77890f43a5cb9f160",
-              "file": "dashboard.spec.ts",
-              "line": 22,
-              "column": 8
-            },
-            {
-              "title": "should allow logout",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "firefox",
-                  "projectName": "firefox",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:46.603Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-0f92d07497bfa95acab6",
-              "file": "dashboard.spec.ts",
-              "line": 29,
-              "column": 8
-            },
-            {
-              "title": "should display invoice statistics",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "firefox",
-                  "projectName": "firefox",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:46.603Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-1ddb0c26b0edf5fe45ec",
-              "file": "dashboard.spec.ts",
-              "line": 39,
-              "column": 8
-            },
-            {
-              "title": "should display dashboard after login",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:50.756Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-8a582340f0a86b6ccbe1",
-              "file": "dashboard.spec.ts",
-              "line": 14,
-              "column": 8
-            },
-            {
-              "title": "should display user menu",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:50.759Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-29b1bd64d86f8b258a00",
-              "file": "dashboard.spec.ts",
-              "line": 22,
-              "column": 8
-            },
-            {
-              "title": "should allow logout",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:50.760Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-4a91a76a8e960e6302e1",
-              "file": "dashboard.spec.ts",
-              "line": 29,
-              "column": 8
-            },
-            {
-              "title": "should display invoice statistics",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:50.760Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-61817de27637fb106ced",
-              "file": "dashboard.spec.ts",
-              "line": 39,
-              "column": 8
-            },
-            {
-              "title": "should display dashboard after login",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:53.071Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-c00d1978daa0d3bc8130",
-              "file": "dashboard.spec.ts",
-              "line": 14,
-              "column": 8
-            },
-            {
-              "title": "should display user menu",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:53.072Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-867f4284daaa1d608dc2",
-              "file": "dashboard.spec.ts",
-              "line": 22,
-              "column": 8
-            },
-            {
-              "title": "should allow logout",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:53.072Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-4464dd71cb6770ff4118",
-              "file": "dashboard.spec.ts",
-              "line": 29,
-              "column": 8
-            },
-            {
-              "title": "should display invoice statistics",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:53.072Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-fe602377e7b2c86f5c6e",
-              "file": "dashboard.spec.ts",
-              "line": 39,
-              "column": 8
-            },
-            {
-              "title": "should display dashboard after login",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "Mobile Safari",
-                  "projectName": "Mobile Safari",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:55.884Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-2e9b2a66cedb31595836",
-              "file": "dashboard.spec.ts",
-              "line": 14,
-              "column": 8
-            },
-            {
-              "title": "should display user menu",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "Mobile Safari",
-                  "projectName": "Mobile Safari",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:55.885Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-4f99493c6485de88aeb6",
-              "file": "dashboard.spec.ts",
-              "line": 22,
-              "column": 8
-            },
-            {
-              "title": "should allow logout",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "Mobile Safari",
-                  "projectName": "Mobile Safari",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:55.885Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-4c839de6789dbddc0016",
-              "file": "dashboard.spec.ts",
-              "line": 29,
-              "column": 8
-            },
-            {
-              "title": "should display invoice statistics",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "Mobile Safari",
-                  "projectName": "Mobile Safari",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:55.885Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-ba92fc0540addbad10e1",
-              "file": "dashboard.spec.ts",
-              "line": 39,
-              "column": 8
-            }
-          ]
-        },
-        {
-          "title": "Bill Management",
-          "file": "dashboard.spec.ts",
-          "line": 48,
-          "column": 6,
-          "specs": [
-            {
-              "title": "should navigate to bills section",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:42.626Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-5c09943429488b0b10b7",
-              "file": "dashboard.spec.ts",
-              "line": 49,
-              "column": 8
-            },
-            {
-              "title": "should open add bill form",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "chromium",
-                  "projectName": "chromium",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:42.626Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-b045fce3b4fc8c873e25",
-              "file": "dashboard.spec.ts",
-              "line": 60,
-              "column": 8
-            },
-            {
-              "title": "should navigate to bills section",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "firefox",
-                  "projectName": "firefox",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:46.603Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-df3d994f51f6288aee4b",
-              "file": "dashboard.spec.ts",
-              "line": 49,
-              "column": 8
-            },
-            {
-              "title": "should open add bill form",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "firefox",
-                  "projectName": "firefox",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:46.603Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-69a1fb5ac9eff78adebb",
-              "file": "dashboard.spec.ts",
-              "line": 60,
-              "column": 8
-            },
-            {
-              "title": "should navigate to bills section",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:50.760Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-188ded3b11015b714297",
-              "file": "dashboard.spec.ts",
-              "line": 49,
-              "column": 8
-            },
-            {
-              "title": "should open add bill form",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "webkit",
-                  "projectName": "webkit",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:50.760Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-f5410114becd05fa0638",
-              "file": "dashboard.spec.ts",
-              "line": 60,
-              "column": 8
-            },
-            {
-              "title": "should navigate to bills section",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:53.072Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-f55586afd8c27a6f876d",
-              "file": "dashboard.spec.ts",
-              "line": 49,
-              "column": 8
-            },
-            {
-              "title": "should open add bill form",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "Mobile Chrome",
-                  "projectName": "Mobile Chrome",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:53.072Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-d4aabf005b60aa269b72",
-              "file": "dashboard.spec.ts",
-              "line": 60,
-              "column": 8
-            },
-            {
-              "title": "should navigate to bills section",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "Mobile Safari",
-                  "projectName": "Mobile Safari",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:55.885Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-724fec6f10488fabd988",
-              "file": "dashboard.spec.ts",
-              "line": 49,
-              "column": 8
-            },
-            {
-              "title": "should open add bill form",
-              "ok": true,
-              "tags": [],
-              "tests": [
-                {
-                  "timeout": 30000,
-                  "annotations": [
-                    {
-                      "type": "skip"
-                    }
-                  ],
-                  "expectedStatus": "skipped",
-                  "projectId": "Mobile Safari",
-                  "projectName": "Mobile Safari",
-                  "results": [
-                    {
-                      "workerIndex": -1,
-                      "parallelIndex": -1,
-                      "status": "skipped",
-                      "duration": 0,
-                      "errors": [],
-                      "stdout": [],
-                      "stderr": [],
-                      "retry": 0,
-                      "startTime": "2025-06-21T06:40:55.885Z",
-                      "annotations": [],
-                      "attachments": []
-                    }
-                  ],
-                  "status": "skipped"
-                }
-              ],
-              "id": "90cda532ab82d274b30b-571749907001b7fb1b2f",
-              "file": "dashboard.spec.ts",
-              "line": 60,
-              "column": 8
             }
           ]
         }
@@ -2345,11 +1612,11 @@
   ],
   "errors": [],
   "stats": {
-    "startTime": "2025-06-21T06:40:38.056Z",
-    "duration": 18892.921,
-    "expected": 30,
-    "skipped": 30,
-    "unexpected": 0,
+    "startTime": "2025-06-21T19:16:41.949Z",
+    "duration": 29438.839,
+    "expected": 19,
+    "skipped": 0,
+    "unexpected": 11,
     "flaky": 0
   }
 }

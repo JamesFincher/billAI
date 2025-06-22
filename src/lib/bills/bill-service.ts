@@ -466,60 +466,100 @@ export class BillService {
 
   // ============= INSTANCE GENERATION =============
   async generateInstancesFromTemplate(templateId: string): Promise<BillInstance[]> {
-    const template = await this.getTemplate(templateId);
-    
-    if (!template.is_recurring || !template.rrule || !template.dtstart) {
-      throw new Error('Template is not configured for recurring bills');
-    }
-
-    const generateUntil = addDays(new Date(), template.auto_generate_days_ahead);
-    const dtstart = parseISO(template.dtstart);
-    
-    const instances = generateBillInstances(
-      template.rrule,
-      dtstart,
-      generateUntil,
-      {
+    try {
+      console.log('🔧 BillService: Starting generateInstancesFromTemplate for:', templateId);
+      
+      const template = await this.getTemplate(templateId);
+      console.log('📋 BillService: Retrieved template:', {
+        id: template.id,
         title: template.title,
-        amount: template.amount,
-        description: template.description,
+        is_recurring: template.is_recurring,
+        rrule: template.rrule,
+        dtstart: template.dtstart,
+        auto_generate_days_ahead: template.auto_generate_days_ahead
+      });
+      
+      if (!template.is_recurring || !template.rrule || !template.dtstart) {
+        const errorMsg = `Template is not configured for recurring bills: is_recurring=${template.is_recurring}, rrule=${template.rrule}, dtstart=${template.dtstart}`;
+        console.error('❌ BillService:', errorMsg);
+        throw new Error(errorMsg);
       }
-    );
 
-    // Insert instances that don't already exist
-    const existingDates = await this.getExistingInstanceDates(templateId);
-    const newInstances = instances.filter(
-      instance => !existingDates.includes(instance.due_date)
-    );
+      const generateUntil = addDays(new Date(), template.auto_generate_days_ahead);
+      const dtstart = parseISO(template.dtstart);
+      
+      console.log('📅 BillService: Generation parameters:', {
+        dtstart: dtstart,
+        generateUntil: generateUntil,
+        daysAhead: template.auto_generate_days_ahead,
+        currentDate: new Date()
+      });
+      
+      const instances = generateBillInstances(
+        template.rrule,
+        dtstart,
+        generateUntil,
+        {
+          title: template.title,
+          amount: template.amount,
+          description: template.description,
+        }
+      );
 
-    if (newInstances.length === 0) return [];
+      console.log(`📊 BillService: generateBillInstances returned ${instances.length} instances`);
 
-    const billsToInsert: CreateBillInstance[] = newInstances.map(instance => ({
-      user_id: template.user_id,
-      template_id: templateId,
-      title: instance.title,
-      description: instance.description,
-      amount: instance.amount,
-      currency: template.currency,
-      due_date: instance.due_date,
-      status: 'scheduled',
-      is_recurring: true,
-      category_id: template.category_id,
-      priority: template.priority,
-      ai_confidence_score: template.ai_confidence_score,
-      ai_risk_score: 0.0,
-      ai_metadata: {},
-      created_date: new Date().toISOString(),
-      is_historical: false,
-    }));
+      // Insert instances that don't already exist
+      const existingDates = await this.getExistingInstanceDates(templateId);
+      console.log('📋 BillService: Existing instance dates:', existingDates);
+      
+      const newInstances = instances.filter(
+        instance => !existingDates.includes(instance.due_date)
+      );
 
-    const { data, error } = await this.supabase
-      .from('bill_instances')
-      .insert(billsToInsert)
-      .select();
+      console.log(`🆕 BillService: ${newInstances.length} new instances to create (${instances.length - newInstances.length} already exist)`);
 
-    if (error) throw error;
-    return data || [];
+      if (newInstances.length === 0) {
+        console.log('ℹ️ BillService: No new instances to create');
+        return [];
+      }
+
+      const billsToInsert: CreateBillInstance[] = newInstances.map(instance => ({
+        user_id: template.user_id,
+        template_id: templateId,
+        title: instance.title,
+        description: instance.description,
+        amount: instance.amount,
+        currency: template.currency,
+        due_date: instance.due_date,
+        status: 'scheduled',
+        is_recurring: true,
+        category_id: template.category_id,
+        priority: template.priority,
+        ai_confidence_score: template.ai_confidence_score,
+        ai_risk_score: 0.0,
+        ai_metadata: {},
+        created_date: new Date().toISOString(),
+        is_historical: false,
+      }));
+
+      console.log('💾 BillService: Inserting bills:', billsToInsert);
+
+      const { data, error } = await this.supabase
+        .from('bill_instances')
+        .insert(billsToInsert)
+        .select();
+
+      if (error) {
+        console.error('❌ BillService: Database insert error:', error);
+        throw error;
+      }
+      
+      console.log(`✅ BillService: Successfully created ${(data || []).length} instances`);
+      return data || [];
+    } catch (error) {
+      console.error('💥 BillService: generateInstancesFromTemplate failed:', error);
+      throw error;
+    }
   }
 
   async regenerateFutureInstances(templateId: string): Promise<void> {

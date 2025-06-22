@@ -1,322 +1,541 @@
-<testsuites id="" name="" tests="60" failures="0" skipped="30" errors="0" time="18.892920999999998">
-<testsuite name="auth.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="chromium" tests="6" failures="0" skipped="0" time="18.932" errors="0">
-<testcase name="Authentication › should display landing page" classname="auth.spec.ts" time="3.563">
+<testsuites id="" name="" tests="30" failures="11" skipped="0" errors="0" time="29.438839">
+<testsuite name="basic-ui.spec.ts" timestamp="2025-06-21T19:16:42.148Z" hostname="chromium" tests="6" failures="3" skipped="0" time="29.701" errors="0">
+<testcase name="BillAI - Basic UI Tests › landing page loads correctly" classname="basic-ui.spec.ts" time="3.891">
+<failure message="basic-ui.spec.ts:4:7 landing page loads correctly" type="FAILURE">
+<![CDATA[  [chromium] › basic-ui.spec.ts:4:7 › BillAI - Basic UI Tests › landing page loads correctly ───────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:
+        1) <span class="text-xl font-bold text-gradient-primary">BillAI</span> aka getByRole('navigation').getByText('BillAI')
+        2) <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')
+        3) <span class="text-xl font-bold">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })
+        4) <p class="text-gray-400 text-sm">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')
+        5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=BillAI')
+
+
+      11 |     // Check that navigation elements are present
+      12 |     await expect(page.locator('nav')).toBeVisible();
+    > 13 |     await expect(page.locator('text=BillAI')).toBeVisible();
+         |                                               ^
+      14 |     
+      15 |     // Check that call-to-action buttons are present
+      16 |     await expect(page.locator('text=Get Started Free')).toBeVisible();
+        at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-chromium/video.webm]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-chromium/error-context.md]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Authentication › should navigate to auth page" classname="auth.spec.ts" time="3.647">
+<testcase name="BillAI - Basic UI Tests › navigation to dashboard works" classname="basic-ui.spec.ts" time="8.491">
+<failure message="basic-ui.spec.ts:20:7 navigation to dashboard works" type="FAILURE">
+<![CDATA[  [chromium] › basic-ui.spec.ts:20:7 › BillAI - Basic UI Tests › navigation to dashboard works ─────
+
+    Error: Timed out 5000ms waiting for expect(locator).toHaveURL(expected)
+
+    Locator: locator(':root')
+    Expected pattern: /.*dashboard.*/
+    Received string:  "http://localhost:3001/"
+    Call log:
+      - Expect "toHaveURL" with timeout 5000ms
+      - waiting for locator(':root')
+        9 × locator resolved to <html lang="en">…</html>
+          - unexpected value "http://localhost:3001/"
+
+
+      25 |     
+      26 |     // Should navigate to dashboard
+    > 27 |     await expect(page).toHaveURL(/.*dashboard.*/);
+         |                        ^
+      28 |   });
+      29 |
+      30 |   test('navigation to auth works', async ({ page }) => {
+        at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:27:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-5c27b-vigation-to-dashboard-works-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-5c27b-vigation-to-dashboard-works-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/basic-ui-BillAI---Basic-UI-5c27b-vigation-to-dashboard-works-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-5c27b-vigation-to-dashboard-works-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-5c27b-vigation-to-dashboard-works-chromium/video.webm]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-5c27b-vigation-to-dashboard-works-chromium/error-context.md]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Authentication › should show validation errors for empty form" classname="auth.spec.ts" time="3.836">
+<testcase name="BillAI - Basic UI Tests › navigation to auth works" classname="basic-ui.spec.ts" time="7.838">
 </testcase>
-<testcase name="Authentication › should allow switching between sign in and sign up" classname="auth.spec.ts" time="3.712">
+<testcase name="BillAI - Basic UI Tests › responsive design - mobile view" classname="basic-ui.spec.ts" time="4.152">
 </testcase>
-<testcase name="Authentication › should handle form submission" classname="auth.spec.ts" time="3.736">
+<testcase name="BillAI - Basic UI Tests › feature cards are visible" classname="basic-ui.spec.ts" time="4.127">
+<failure message="basic-ui.spec.ts:54:7 feature cards are visible" type="FAILURE">
+<![CDATA[  [chromium] › basic-ui.spec.ts:54:7 › BillAI - Basic UI Tests › feature cards are visible ─────────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:
+        1) <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')
+        2) <h3 class="text-xl font-semibold text-gray-900 mb-3">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=AI-Powered Insights')
+
+
+      56 |     
+      57 |     // Check that feature cards are present
+    > 58 |     await expect(page.locator('text=AI-Powered Insights')).toBeVisible();
+         |                                                            ^
+      59 |     await expect(page.locator('text=Smart Analytics')).toBeVisible();
+      60 |     await expect(page.locator('text=Automated Payments')).toBeVisible();
+      61 |     
+        at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-chromium/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-chromium/test-failed-1.png]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-chromium/video.webm]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-chromium/error-context.md]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Protected Routes › should redirect to auth when accessing protected routes without login" classname="auth.spec.ts" time="0.438">
-</testcase>
-</testsuite>
-<testsuite name="dashboard.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="chromium" tests="6" failures="0" skipped="6" time="0" errors="0">
-<testcase name="Dashboard › should display dashboard after login" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Dashboard › should display user menu" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Dashboard › should allow logout" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Dashboard › should display invoice statistics" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Bill Management › should navigate to bills section" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Bill Management › should open add bill form" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-</testsuite>
-<testsuite name="auth.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="firefox" tests="6" failures="0" skipped="0" time="12.092" errors="0">
-<testcase name="Authentication › should display landing page" classname="auth.spec.ts" time="1.861">
-</testcase>
-<testcase name="Authentication › should navigate to auth page" classname="auth.spec.ts" time="2.495">
-</testcase>
-<testcase name="Authentication › should show validation errors for empty form" classname="auth.spec.ts" time="1.588">
-</testcase>
-<testcase name="Authentication › should allow switching between sign in and sign up" classname="auth.spec.ts" time="2.385">
-</testcase>
-<testcase name="Authentication › should handle form submission" classname="auth.spec.ts" time="2.731">
-</testcase>
-<testcase name="Protected Routes › should redirect to auth when accessing protected routes without login" classname="auth.spec.ts" time="1.032">
-</testcase>
-</testsuite>
-<testsuite name="dashboard.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="firefox" tests="6" failures="0" skipped="6" time="0" errors="0">
-<testcase name="Dashboard › should display dashboard after login" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Dashboard › should display user menu" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Dashboard › should allow logout" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Dashboard › should display invoice statistics" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Bill Management › should navigate to bills section" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Bill Management › should open add bill form" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-</testsuite>
-<testsuite name="auth.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="webkit" tests="6" failures="0" skipped="0" time="9.761" errors="0">
-<testcase name="Authentication › should display landing page" classname="auth.spec.ts" time="1.467">
-</testcase>
-<testcase name="Authentication › should navigate to auth page" classname="auth.spec.ts" time="2.247">
-</testcase>
-<testcase name="Authentication › should show validation errors for empty form" classname="auth.spec.ts" time="1.601">
-</testcase>
-<testcase name="Authentication › should allow switching between sign in and sign up" classname="auth.spec.ts" time="1.876">
-</testcase>
-<testcase name="Authentication › should handle form submission" classname="auth.spec.ts" time="1.558">
-</testcase>
-<testcase name="Protected Routes › should redirect to auth when accessing protected routes without login" classname="auth.spec.ts" time="1.012">
-</testcase>
-</testsuite>
-<testsuite name="dashboard.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="webkit" tests="6" failures="0" skipped="6" time="0" errors="0">
-<testcase name="Dashboard › should display dashboard after login" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Dashboard › should display user menu" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Dashboard › should allow logout" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Dashboard › should display invoice statistics" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Bill Management › should navigate to bills section" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
-</testcase>
-<testcase name="Bill Management › should open add bill form" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="BillAI - Basic UI Tests › footer is present" classname="basic-ui.spec.ts" time="1.202">
 </testcase>
 </testsuite>
-<testsuite name="auth.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="Mobile Chrome" tests="6" failures="0" skipped="0" time="5.8" errors="0">
-<testcase name="Authentication › should display landing page" classname="auth.spec.ts" time="1.067">
+<testsuite name="basic-ui.spec.ts" timestamp="2025-06-21T19:16:42.148Z" hostname="firefox" tests="6" failures="2" skipped="0" time="19.336" errors="0">
+<testcase name="BillAI - Basic UI Tests › landing page loads correctly" classname="basic-ui.spec.ts" time="3.49">
+<failure message="basic-ui.spec.ts:4:7 landing page loads correctly" type="FAILURE">
+<![CDATA[  [firefox] › basic-ui.spec.ts:4:7 › BillAI - Basic UI Tests › landing page loads correctly ────────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:
+        1) <span class="text-xl font-bold text-gradient-primary">BillAI</span> aka getByRole('navigation').getByText('BillAI')
+        2) <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')
+        3) <span class="text-xl font-bold">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })
+        4) <p class="text-gray-400 text-sm">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')
+        5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=BillAI')
+
+
+      11 |     // Check that navigation elements are present
+      12 |     await expect(page.locator('nav')).toBeVisible();
+    > 13 |     await expect(page.locator('text=BillAI')).toBeVisible();
+         |                                               ^
+      14 |     
+      15 |     // Check that call-to-action buttons are present
+      16 |     await expect(page.locator('text=Get Started Free')).toBeVisible();
+        at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-firefox/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-firefox/test-failed-1.png]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-firefox/video.webm]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-firefox/error-context.md]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Authentication › should navigate to auth page" classname="auth.spec.ts" time="1.312">
+<testcase name="BillAI - Basic UI Tests › navigation to dashboard works" classname="basic-ui.spec.ts" time="2.896">
 </testcase>
-<testcase name="Authentication › should show validation errors for empty form" classname="auth.spec.ts" time="1.019">
+<testcase name="BillAI - Basic UI Tests › navigation to auth works" classname="basic-ui.spec.ts" time="3.511">
 </testcase>
-<testcase name="Authentication › should allow switching between sign in and sign up" classname="auth.spec.ts" time="1.099">
+<testcase name="BillAI - Basic UI Tests › responsive design - mobile view" classname="basic-ui.spec.ts" time="2.012">
 </testcase>
-<testcase name="Authentication › should handle form submission" classname="auth.spec.ts" time="0.771">
+<testcase name="BillAI - Basic UI Tests › feature cards are visible" classname="basic-ui.spec.ts" time="3.245">
+<failure message="basic-ui.spec.ts:54:7 feature cards are visible" type="FAILURE">
+<![CDATA[  [firefox] › basic-ui.spec.ts:54:7 › BillAI - Basic UI Tests › feature cards are visible ──────────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:
+        1) <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')
+        2) <h3 class="text-xl font-semibold text-gray-900 mb-3">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=AI-Powered Insights')
+
+
+      56 |     
+      57 |     // Check that feature cards are present
+    > 58 |     await expect(page.locator('text=AI-Powered Insights')).toBeVisible();
+         |                                                            ^
+      59 |     await expect(page.locator('text=Smart Analytics')).toBeVisible();
+      60 |     await expect(page.locator('text=Automated Payments')).toBeVisible();
+      61 |     
+        at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-firefox/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-firefox/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-firefox/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-firefox/test-failed-1.png]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-firefox/video.webm]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-firefox/error-context.md]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Protected Routes › should redirect to auth when accessing protected routes without login" classname="auth.spec.ts" time="0.532">
+<testcase name="BillAI - Basic UI Tests › footer is present" classname="basic-ui.spec.ts" time="4.182">
 </testcase>
 </testsuite>
-<testsuite name="dashboard.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="Mobile Chrome" tests="6" failures="0" skipped="6" time="0" errors="0">
-<testcase name="Dashboard › should display dashboard after login" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testsuite name="basic-ui.spec.ts" timestamp="2025-06-21T19:16:42.148Z" hostname="webkit" tests="6" failures="2" skipped="0" time="14.86" errors="0">
+<testcase name="BillAI - Basic UI Tests › landing page loads correctly" classname="basic-ui.spec.ts" time="3.306">
+<failure message="basic-ui.spec.ts:4:7 landing page loads correctly" type="FAILURE">
+<![CDATA[  [webkit] › basic-ui.spec.ts:4:7 › BillAI - Basic UI Tests › landing page loads correctly ─────────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:
+        1) <span class="text-xl font-bold text-gradient-primary">BillAI</span> aka getByRole('navigation').getByText('BillAI')
+        2) <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')
+        3) <span class="text-xl font-bold">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })
+        4) <p class="text-gray-400 text-sm">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')
+        5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=BillAI')
+
+
+      11 |     // Check that navigation elements are present
+      12 |     await expect(page.locator('nav')).toBeVisible();
+    > 13 |     await expect(page.locator('text=BillAI')).toBeVisible();
+         |                                               ^
+      14 |     
+      15 |     // Check that call-to-action buttons are present
+      16 |     await expect(page.locator('text=Get Started Free')).toBeVisible();
+        at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-webkit/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-webkit/test-failed-1.png]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-webkit/video.webm]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-webkit/error-context.md]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Dashboard › should display user menu" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="BillAI - Basic UI Tests › navigation to dashboard works" classname="basic-ui.spec.ts" time="3.075">
 </testcase>
-<testcase name="Dashboard › should allow logout" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="BillAI - Basic UI Tests › navigation to auth works" classname="basic-ui.spec.ts" time="2.83">
 </testcase>
-<testcase name="Dashboard › should display invoice statistics" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="BillAI - Basic UI Tests › responsive design - mobile view" classname="basic-ui.spec.ts" time="0.862">
 </testcase>
-<testcase name="Bill Management › should navigate to bills section" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="BillAI - Basic UI Tests › feature cards are visible" classname="basic-ui.spec.ts" time="2.539">
+<failure message="basic-ui.spec.ts:54:7 feature cards are visible" type="FAILURE">
+<![CDATA[  [webkit] › basic-ui.spec.ts:54:7 › BillAI - Basic UI Tests › feature cards are visible ───────────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:
+        1) <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')
+        2) <h3 class="text-xl font-semibold text-gray-900 mb-3">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=AI-Powered Insights')
+
+
+      56 |     
+      57 |     // Check that feature cards are present
+    > 58 |     await expect(page.locator('text=AI-Powered Insights')).toBeVisible();
+         |                                                            ^
+      59 |     await expect(page.locator('text=Smart Analytics')).toBeVisible();
+      60 |     await expect(page.locator('text=Automated Payments')).toBeVisible();
+      61 |     
+        at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-webkit/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-webkit/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-webkit/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-webkit/test-failed-1.png]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-webkit/video.webm]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-webkit/error-context.md]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Bill Management › should open add bill form" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="BillAI - Basic UI Tests › footer is present" classname="basic-ui.spec.ts" time="2.248">
 </testcase>
 </testsuite>
-<testsuite name="auth.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="Mobile Safari" tests="6" failures="0" skipped="0" time="8.666" errors="0">
-<testcase name="Authentication › should display landing page" classname="auth.spec.ts" time="1.083">
+<testsuite name="basic-ui.spec.ts" timestamp="2025-06-21T19:16:42.148Z" hostname="Mobile Chrome" tests="6" failures="2" skipped="0" time="12.558" errors="0">
+<testcase name="BillAI - Basic UI Tests › landing page loads correctly" classname="basic-ui.spec.ts" time="2.192">
+<failure message="basic-ui.spec.ts:4:7 landing page loads correctly" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › basic-ui.spec.ts:4:7 › BillAI - Basic UI Tests › landing page loads correctly ──
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:
+        1) <span class="text-xl font-bold text-gradient-primary">BillAI</span> aka getByRole('navigation').getByText('BillAI')
+        2) <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')
+        3) <span class="text-xl font-bold">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })
+        4) <p class="text-gray-400 text-sm">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')
+        5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=BillAI')
+
+
+      11 |     // Check that navigation elements are present
+      12 |     await expect(page.locator('nav')).toBeVisible();
+    > 13 |     await expect(page.locator('text=BillAI')).toBeVisible();
+         |                                               ^
+      14 |     
+      15 |     // Check that call-to-action buttons are present
+      16 |     await expect(page.locator('text=Get Started Free')).toBeVisible();
+        at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Chrome/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Chrome/test-failed-1.png]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Chrome/video.webm]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Chrome/error-context.md]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Authentication › should navigate to auth page" classname="auth.spec.ts" time="1.998">
+<testcase name="BillAI - Basic UI Tests › navigation to dashboard works" classname="basic-ui.spec.ts" time="1.874">
 </testcase>
-<testcase name="Authentication › should show validation errors for empty form" classname="auth.spec.ts" time="1.534">
+<testcase name="BillAI - Basic UI Tests › navigation to auth works" classname="basic-ui.spec.ts" time="2.143">
 </testcase>
-<testcase name="Authentication › should allow switching between sign in and sign up" classname="auth.spec.ts" time="1.581">
+<testcase name="BillAI - Basic UI Tests › responsive design - mobile view" classname="basic-ui.spec.ts" time="2.656">
 </testcase>
-<testcase name="Authentication › should handle form submission" classname="auth.spec.ts" time="1.432">
+<testcase name="BillAI - Basic UI Tests › feature cards are visible" classname="basic-ui.spec.ts" time="1.483">
+<failure message="basic-ui.spec.ts:54:7 feature cards are visible" type="FAILURE">
+<![CDATA[  [Mobile Chrome] › basic-ui.spec.ts:54:7 › BillAI - Basic UI Tests › feature cards are visible ────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:
+        1) <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')
+        2) <h3 class="text-xl font-semibold text-gray-900 mb-3">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=AI-Powered Insights')
+
+
+      56 |     
+      57 |     // Check that feature cards are present
+    > 58 |     await expect(page.locator('text=AI-Powered Insights')).toBeVisible();
+         |                                                            ^
+      59 |     await expect(page.locator('text=Smart Analytics')).toBeVisible();
+      60 |     await expect(page.locator('text=Automated Payments')).toBeVisible();
+      61 |     
+        at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Chrome/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Chrome/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Chrome/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Chrome/test-failed-1.png]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Chrome/video.webm]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Chrome/error-context.md]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Protected Routes › should redirect to auth when accessing protected routes without login" classname="auth.spec.ts" time="1.038">
+<testcase name="BillAI - Basic UI Tests › footer is present" classname="basic-ui.spec.ts" time="2.21">
 </testcase>
 </testsuite>
-<testsuite name="dashboard.spec.ts" timestamp="2025-06-21T06:40:38.156Z" hostname="Mobile Safari" tests="6" failures="0" skipped="6" time="0" errors="0">
-<testcase name="Dashboard › should display dashboard after login" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testsuite name="basic-ui.spec.ts" timestamp="2025-06-21T19:16:42.148Z" hostname="Mobile Safari" tests="6" failures="2" skipped="0" time="8.035" errors="0">
+<testcase name="BillAI - Basic UI Tests › landing page loads correctly" classname="basic-ui.spec.ts" time="1.737">
+<failure message="basic-ui.spec.ts:4:7 landing page loads correctly" type="FAILURE">
+<![CDATA[  [Mobile Safari] › basic-ui.spec.ts:4:7 › BillAI - Basic UI Tests › landing page loads correctly ──
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=BillAI') resolved to 5 elements:
+        1) <span class="text-xl font-bold text-gradient-primary">BillAI</span> aka getByRole('navigation').getByText('BillAI')
+        2) <p class="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">Join thousands of users who have simplified their…</p> aka getByText('Join thousands of users who')
+        3) <span class="text-xl font-bold">BillAI</span> aka getByRole('contentinfo').getByText('BillAI', { exact: true })
+        4) <p class="text-gray-400 text-sm">© 2024 BillAI. All rights reserved. Built with ❤️…</p> aka getByText('© 2024 BillAI. All rights')
+        5) <title>BillAI - Smart Billing Solutions</title> aka getByText('BillAI - Smart Billing')
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=BillAI')
+
+
+      11 |     // Check that navigation elements are present
+      12 |     await expect(page.locator('nav')).toBeVisible();
+    > 13 |     await expect(page.locator('text=BillAI')).toBeVisible();
+         |                                               ^
+      14 |     
+      15 |     // Check that call-to-action buttons are present
+      16 |     await expect(page.locator('text=Get Started Free')).toBeVisible();
+        at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:13:47
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Safari/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Safari/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Safari/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Safari/test-failed-1.png]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Safari/video.webm]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-76af1-anding-page-loads-correctly-Mobile-Safari/error-context.md]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Dashboard › should display user menu" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="BillAI - Basic UI Tests › navigation to dashboard works" classname="basic-ui.spec.ts" time="1.516">
 </testcase>
-<testcase name="Dashboard › should allow logout" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="BillAI - Basic UI Tests › navigation to auth works" classname="basic-ui.spec.ts" time="1.477">
 </testcase>
-<testcase name="Dashboard › should display invoice statistics" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="BillAI - Basic UI Tests › responsive design - mobile view" classname="basic-ui.spec.ts" time="1.231">
 </testcase>
-<testcase name="Bill Management › should navigate to bills section" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="BillAI - Basic UI Tests › feature cards are visible" classname="basic-ui.spec.ts" time="1.161">
+<failure message="basic-ui.spec.ts:54:7 feature cards are visible" type="FAILURE">
+<![CDATA[  [Mobile Safari] › basic-ui.spec.ts:54:7 › BillAI - Basic UI Tests › feature cards are visible ────
+
+    Error: expect.toBeVisible: Error: strict mode violation: locator('text=AI-Powered Insights') resolved to 2 elements:
+        1) <p class="text-xl text-gray-600 max-w-3xl mx-auto mb-12 leading-relaxed">Take control of your financial future with intell…</p> aka getByText('Take control of your financial future with intelligent bill tracking, AI-')
+        2) <h3 class="text-xl font-semibold text-gray-900 mb-3">AI-Powered Insights</h3> aka getByRole('heading', { name: 'AI-Powered Insights' })
+
+    Call log:
+      - Expect "toBeVisible" with timeout 5000ms
+      - waiting for locator('text=AI-Powered Insights')
+
+
+      56 |     
+      57 |     // Check that feature cards are present
+    > 58 |     await expect(page.locator('text=AI-Powered Insights')).toBeVisible();
+         |                                                            ^
+      59 |     await expect(page.locator('text=Smart Analytics')).toBeVisible();
+      60 |     await expect(page.locator('text=Automated Payments')).toBeVisible();
+      61 |     
+        at /Users/jamesfincher/code/billAI/e2e/basic-ui.spec.ts:58:60
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Safari/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Safari/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: ../test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Safari/error-context.md
+]]>
+</failure>
+<system-out>
+<![CDATA[
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Safari/test-failed-1.png]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Safari/video.webm]]
+
+[[ATTACHMENT|test-results/basic-ui-BillAI---Basic-UI-Tests-feature-cards-are-visible-Mobile-Safari/error-context.md]]
+]]>
+</system-out>
 </testcase>
-<testcase name="Bill Management › should open add bill form" classname="dashboard.spec.ts" time="0">
-<properties>
-<property name="skip" value="">
-</property>
-</properties>
-<skipped>
-</skipped>
+<testcase name="BillAI - Basic UI Tests › footer is present" classname="basic-ui.spec.ts" time="0.913">
 </testcase>
 </testsuite>
 </testsuites>

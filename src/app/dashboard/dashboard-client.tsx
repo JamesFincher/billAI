@@ -304,21 +304,106 @@ export default function DashboardClient({
           
           console.log('✅ Bill template created successfully:', insertedTemplate);
           
-          // Now generate bill instances from the template
-          console.log('🔄 Generating bill instances from template...');
+          // Now generate bill instances from the template directly
+          console.log('🔄 Generating instances for recurring bill...');
           
-          // Import BillService dynamically to avoid circular imports
-          const { BillService } = await import('@/lib/bills/bill-service');
-          const billService = new BillService();
-          
+          // Generate instances directly instead of using BillService to avoid import issues
           try {
-            const instances = await billService.generateInstancesFromTemplate(insertedTemplate.id);
-            console.log(`✅ Generated ${instances.length} bill instances`);
+            console.log('🔧 Starting instance generation for template:', insertedTemplate.id);
+            console.log('📋 Template details:', {
+              id: insertedTemplate.id,
+              is_recurring: insertedTemplate.is_recurring,
+              rrule: insertedTemplate.rrule,
+              dtstart: insertedTemplate.dtstart,
+              auto_generate_days_ahead: insertedTemplate.auto_generate_days_ahead
+            });
+            
+            // Import RRULE utilities directly
+            const { rrulestr } = await import('rrule');
+            const { format, addDays, parseISO } = await import('date-fns');
+            
+            const generateUntil = addDays(new Date(), insertedTemplate.auto_generate_days_ahead);
+            const dtstart = parseISO(insertedTemplate.dtstart);
+            
+            console.log('📅 Generation parameters:', {
+              dtstart: dtstart.toISOString(),
+              generateUntil: generateUntil.toISOString(),
+              rrule: insertedTemplate.rrule
+            });
+            
+            // Parse the RRULE and generate occurrences
+            const rule = rrulestr(insertedTemplate.rrule, { dtstart });
+            const now = new Date();
+            const occurrences = rule.between(now, generateUntil, true);
+            
+            console.log(`📅 Found ${occurrences.length} occurrences`);
+            
+            if (occurrences.length === 0) {
+              console.log('⚠️ No occurrences generated - checking parameters...');
+              console.log('  - Start date:', dtstart.toISOString());
+              console.log('  - Current date:', now.toISOString());
+              console.log('  - Generate until:', generateUntil.toISOString());
+              console.log('  - RRULE:', insertedTemplate.rrule);
+            } else {
+              // Check for existing instances to avoid duplicates
+              const { data: existingInstances } = await supabase
+                .from('bill_instances')
+                .select('due_date')
+                .eq('template_id', insertedTemplate.id);
+
+              const existingDates = (existingInstances || []).map(d => d.due_date);
+              
+              const newOccurrences = occurrences.filter(
+                date => !existingDates.includes(format(date, 'yyyy-MM-dd'))
+              );
+              
+              console.log(`🆕 ${newOccurrences.length} new instances to create (${existingDates.length} already exist)`);
+              
+              if (newOccurrences.length > 0) {
+                // Create the bill instances
+                const billsToInsert = newOccurrences.map(date => ({
+                  user_id: user.id,
+                  template_id: insertedTemplate.id,
+                  title: insertedTemplate.title,
+                  description: insertedTemplate.description,
+                  amount: insertedTemplate.amount,
+                  currency: insertedTemplate.currency,
+                  due_date: format(date, 'yyyy-MM-dd'),
+                  status: 'scheduled' as const,
+                  is_recurring: true,
+                  category_id: insertedTemplate.category_id,
+                  priority: insertedTemplate.priority,
+                  ai_confidence_score: insertedTemplate.ai_confidence_score,
+                  ai_risk_score: 0.0,
+                  ai_metadata: {},
+                  created_date: new Date().toISOString(),
+                  is_historical: false,
+                }));
+
+                console.log('💾 Inserting instances:', billsToInsert.length);
+
+                const { data: createdInstances, error: insertError } = await supabase
+                  .from('bill_instances')
+                  .insert(billsToInsert)
+                  .select();
+
+                if (insertError) {
+                  console.error('❌ Failed to insert instances:', insertError);
+                  throw insertError;
+                }
+
+                console.log(`✅ Successfully created ${createdInstances.length} instances`);
+              }
+            }
           } catch (instanceError) {
             console.error('❌ Error generating instances:', instanceError);
+            console.error('❌ Error details:', {
+              message: instanceError instanceof Error ? instanceError.message : 'Unknown error',
+              stack: instanceError instanceof Error ? instanceError.stack : undefined,
+              templateId: insertedTemplate.id
+            });
             // Don't throw here - template was created successfully
           }
-          
         } else {
           console.log('📝 Creating one-time bill...');
           
