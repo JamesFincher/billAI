@@ -123,12 +123,18 @@ export function BillForm({ mode, type, selectedMonth, initialData, onSubmit, onC
     
     const submitData = {
       ...formData,
-      amount: parseFloat(formData.amount),
+      amount: parseFloat(formData.amount) || 0,
+      // Convert empty strings to undefined for optional fields
+      description: formData.description.trim() || undefined,
+      notes: formData.notes.trim() || undefined,
+      category_id: formData.category_id || undefined,
+      // Only include RRULE data if recurring
       is_recurring: isRecurring,
-      rrule: isRecurring ? formData.rrule : null,
-      dtstart: isRecurring ? formData.dtstart : null
+      rrule: isRecurring ? formData.rrule : undefined,
+      dtstart: isRecurring ? formData.dtstart : undefined
     };
 
+    console.log('📋 Form submitting data:', submitData);
     await onSubmit(submitData);
   };
 
