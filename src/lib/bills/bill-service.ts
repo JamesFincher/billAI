@@ -509,6 +509,8 @@ export class BillService {
       ai_confidence_score: template.ai_confidence_score,
       ai_risk_score: 0.0,
       ai_metadata: {},
+      created_date: new Date().toISOString(),
+      is_historical: false,
     }));
 
     const { data, error } = await this.supabase

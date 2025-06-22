@@ -230,8 +230,20 @@ export default function DashboardClient({
       if (editingBill) {
         console.log('✏️ Updating existing bill:', editingBill.id);
         
-        // Update existing bill - remove fields that don't exist in bill_instances
-        const { dtstart: _dtstart, rrule: _rrule, ...updateData } = data;
+        // Update existing bill - remove fields that don't exist in bill_instances or are generated/read-only
+        const { 
+          dtstart: _dtstart, 
+          rrule: _rrule, 
+          attachments: _attachments, 
+          category: _category, 
+          template: _template, 
+          tags: _tags,
+          can_edit: _can_edit,
+          id: _id,
+          created_at: _created_at,
+          updated_at: _updated_at,
+          ...updateData 
+        } = data;
         const sanitizedData = sanitizeUUIDs(updateData);
         
         console.log('📝 Update data:', sanitizedData);
@@ -250,56 +262,117 @@ export default function DashboardClient({
       } else {
         console.log('➕ Creating new bill...');
         
-        // Create new bill - map form data to database schema
-        const { dtstart: _dtstart, rrule: _rrule, ...formData } = data;
+        const isRecurring = data.is_recurring as boolean;
         
-        // Map form data to CreateBillInstance schema
-        const billData = {
-          user_id: user.id,
-          template_id: null, // One-time bills don't have templates
-          title: formData.title as string,
-          description: formData.description as string || null,
-          amount: formData.amount as number,
-          currency: formData.currency as string || 'USD',
-          due_date: formData.due_date as string,
-          scheduled_date: null,
-          paid_date: null,
-          created_date: new Date().toISOString(),
-          status: 'pending' as const,
-          is_recurring: formData.is_recurring as boolean || false,
-          category_id: formData.category_id as string || null,
-          notes: formData.notes as string || null,
-          priority: (formData.priority as number) || 3,
-          is_historical: false,
-          original_amount: null,
-          ai_predicted_amount: null,
-          ai_confidence_score: 0.0,
-          ai_risk_score: 0.0,
-          ai_metadata: {}
-        };
+        if (isRecurring && data.rrule && data.dtstart) {
+          console.log('🔄 Creating recurring bill template...');
+          
+          // Create bill template for recurring bills
+          const templateData = {
+            user_id: user.id,
+            title: data.title as string,
+            description: data.description as string || null,
+            amount: data.amount as number,
+            currency: data.currency as string || 'USD',
+            category_id: data.category_id as string || null,
+            priority: (data.priority as number) || 3,
+            is_recurring: true,
+            rrule: data.rrule as string,
+            dtstart: data.dtstart as string,
+            timezone: 'America/New_York', // Default timezone
+            auto_generate_days_ahead: 90, // Generate 3 months ahead
+            notes: data.notes as string || null,
+            ai_confidence_score: 0.0,
+            ai_metadata: {}
+          };
 
-        console.log('📋 Bill data to insert:', billData);
-        console.log('📅 Due date being inserted:', billData.due_date);
-        console.log('📅 Current month being viewed:', selectedMonth.toISOString().split('T')[0]);
+          console.log('📋 Template data to insert:', templateData);
+          
+          // Sanitize UUID fields
+          const sanitizedTemplateData = sanitizeUUIDs(templateData);
+          
+          const { data: insertedTemplate, error: templateError } = await supabase
+            .from('bill_templates')
+            .insert([sanitizedTemplateData])
+            .select()
+            .single();
 
-        // Sanitize UUID fields
-        const sanitizedData = sanitizeUUIDs(billData);
-        
-        console.log('🧹 Sanitized data:', sanitizedData);
-        console.log('🧹 Sanitized due_date:', sanitizedData.due_date);
-        
-        const { data: insertedBill, error } = await supabase
-          .from('bill_instances')
-          .insert([sanitizedData])
-          .select()
-          .single();
+          if (templateError) {
+            console.error('❌ Template insert error:', templateError);
+            throw templateError;
+          }
+          
+          console.log('✅ Bill template created successfully:', insertedTemplate);
+          
+          // Now generate bill instances from the template
+          console.log('🔄 Generating bill instances from template...');
+          
+          // Import BillService dynamically to avoid circular imports
+          const { BillService } = await import('@/lib/bills/bill-service');
+          const billService = new BillService();
+          
+          try {
+            const instances = await billService.generateInstancesFromTemplate(insertedTemplate.id);
+            console.log(`✅ Generated ${instances.length} bill instances`);
+          } catch (instanceError) {
+            console.error('❌ Error generating instances:', instanceError);
+            // Don't throw here - template was created successfully
+          }
+          
+        } else {
+          console.log('📝 Creating one-time bill...');
+          
+          // Create single bill instance for one-time bills
+          const { dtstart: _dtstart, rrule: _rrule, ...formData } = data;
+          
+          // Map form data to CreateBillInstance schema
+          const billData = {
+            user_id: user.id,
+            template_id: null, // One-time bills don't have templates
+            title: formData.title as string,
+            description: formData.description as string || null,
+            amount: formData.amount as number,
+            currency: formData.currency as string || 'USD',
+            due_date: formData.due_date as string,
+            scheduled_date: null,
+            paid_date: null,
+            created_date: new Date().toISOString(),
+            status: 'pending' as const,
+            is_recurring: false,
+            category_id: formData.category_id as string || null,
+            notes: formData.notes as string || null,
+            priority: (formData.priority as number) || 3,
+            is_historical: false,
+            original_amount: null,
+            ai_predicted_amount: null,
+            ai_confidence_score: 0.0,
+            ai_risk_score: 0.0,
+            ai_metadata: {}
+          };
 
-        if (error) {
-          console.error('❌ Insert error:', error);
-          throw error;
+          console.log('📋 Bill data to insert:', billData);
+          console.log('📅 Due date being inserted:', billData.due_date);
+          console.log('📅 Current month being viewed:', selectedMonth.toISOString().split('T')[0]);
+
+          // Sanitize UUID fields
+          const sanitizedData = sanitizeUUIDs(billData);
+          
+          console.log('🧹 Sanitized data:', sanitizedData);
+          console.log('🧹 Sanitized due_date:', sanitizedData.due_date);
+          
+          const { data: insertedBill, error } = await supabase
+            .from('bill_instances')
+            .insert([sanitizedData])
+            .select()
+            .single();
+
+          if (error) {
+            console.error('❌ Insert error:', error);
+            throw error;
+          }
+          
+          console.log('✅ Bill created successfully:', insertedBill);
         }
-        
-        console.log('✅ Bill created successfully:', insertedBill);
       }
 
       console.log('🔄 Refreshing data...');

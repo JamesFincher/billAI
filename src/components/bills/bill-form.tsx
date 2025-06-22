@@ -45,11 +45,26 @@ export function BillForm({ mode, type, selectedMonth, initialData, onSubmit, onC
 
   useEffect(() => {
     if (initialData) {
+      // Filter out read-only/generated fields that shouldn't be in the form
+      const { 
+        can_edit, 
+        id, 
+        created_at, 
+        updated_at, 
+        category, 
+        template, 
+        tags, 
+        attachments,
+        ...formFields 
+      } = initialData as any;
+      
       setFormData(prev => ({
         ...prev,
-        ...initialData,
+        ...formFields,
         amount: initialData.amount?.toString() || '',
-        due_date: (initialData as any).due_date ? format(new Date((initialData as any).due_date), 'yyyy-MM-dd') : prev.due_date
+        due_date: (initialData as any).due_date ? format(new Date((initialData as any).due_date), 'yyyy-MM-dd') : prev.due_date,
+        description: initialData.description || '', // Ensure description is never null
+        notes: initialData.notes || '' // Ensure notes is never null
       }));
       setIsRecurring(initialData.is_recurring || false);
     }
